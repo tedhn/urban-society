@@ -10,7 +10,7 @@ const Nav = () => {
 
 	return (
 		<nav className='container flex justify-between items-center sticky top-0 mx-auto p-5 bg-transparent z-10'>
-			<h1 className='text-2xl font-black cursor-pointer'>Urban Society</h1>
+			<h1 className='text-2xl font-black cursor-pointer' onClick={()=> navigate('/')}>Urban Society</h1>
 
 			<ul className='flex gap-4 font-bold '>
 				<li
@@ -44,7 +44,7 @@ const Nav = () => {
 						/>
 					</svg>
 				</li>
-				<li className=' cursor-pointer'>
+				<li className=' cursor-pointer' onClick={()=> navigate('/wishlist')}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						className='h-5 w-5'

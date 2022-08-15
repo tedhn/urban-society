@@ -5,6 +5,7 @@ import Nav from "./components/nav/Nav";
 import Home from "./pages/home/Home";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import ProductList from "./pages/productList/ProductList";
+import Wishlist from "./pages/wishlist/Wishlist";
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -16,9 +17,11 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 
-				<Route path='category' element={<ProductList />}>
+				<Route path='category'>
 					<Route path=':category' element={<ProductList />} />
 				</Route>
+
+				<Route path='wishlist' element={<Wishlist />} />
 			</Routes>
 
 			<Footer />
