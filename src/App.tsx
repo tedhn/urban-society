@@ -25,9 +25,7 @@ function App() {
 					<Route path=':productId' element={<ProductDetails />} />
 				</Route>
 
-				<Route path='wishlist' element={<Wishlist />} >
-
-				</Route>
+				<Route path='wishlist' element={<Wishlist />} />
 			</Routes>
 
 			<Footer />

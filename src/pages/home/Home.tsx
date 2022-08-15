@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../../components/card/Card";
 
 const Home = () => {
 	return (
@@ -25,77 +26,11 @@ const Home = () => {
 					<h2 className='text-2xl font-bold'>New Arrivals</h2>
 
 					<div className='flex flex-wrap justify-center gap-10 my-20'>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
 					</div>
 
 					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold'>
@@ -111,62 +46,10 @@ const Home = () => {
 					</p>
 
 					<div className='flex flex-wrap justify-center gap-10 my-20'>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
-						<div className='text-darkgrey bg-white rounded-md shadow-md'>
-							<div className='w-40'>
-								<img
-									src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-									alt='404'
-									className='rounded-t-md'
-								/>
-							</div>
-
-							<div className='font-medium py-2'>
-								<p className='text-base'>LeBron 17</p>
-								<p className='text-sm'>$260</p>
-							</div>
-						</div>
+						<Card />
+						<Card />
+						<Card />
+						<Card />
 					</div>
 
 					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold'>

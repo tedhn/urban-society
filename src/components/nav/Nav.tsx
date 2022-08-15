@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ReactComponent as Heart } from "../../svg/heart.svg";
-import { ReactComponent as Search } from "../../svg/search.svg";
-import { ReactComponent as Cart } from "../../svg/cart.svg";
-import { ReactComponent as User } from "../../svg/user.svg";
+import { ReactComponent as HeartSVG } from "../../svg/heart.svg";
+import { ReactComponent as CartSVG } from "../../svg/cart.svg";
+import { ReactComponent as UserSVG } from "../../svg/user.svg";
+import Search from "../search/Search";
 
 const Nav = () => {
 	const navigate = useNavigate();
@@ -41,16 +41,16 @@ const Nav = () => {
 
 			<ul className='flex gap-4 font-bold'>
 				<li className=' cursor-pointer'>
-					<Search />
+					<Search hidden={true}/>
 				</li>
 				<li className=' cursor-pointer' onClick={() => navigate("/wishlist")}>
-					<Heart />
+					<HeartSVG />
 				</li>
 				<li className=' cursor-pointer'>
-					<Cart />
+					<CartSVG />
 				</li>
 				<li className=' cursor-pointer'>
-					<User />
+					<UserSVG />
 				</li>
 			</ul>
 		</nav>
