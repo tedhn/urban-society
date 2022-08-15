@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import Cart from "./components/cart/Cart";
 import Footer from "./components/footer/Footer";
 import Nav from "./components/nav/Nav";
 import Home from "./pages/home/Home";
@@ -8,11 +9,13 @@ import ProductList from "./pages/productList/ProductList";
 import Wishlist from "./pages/wishlist/Wishlist";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [toggleCart, setToggleCart] = useState(false);
 
 	return (
 		<div className='App'>
-			<Nav />
+			<Nav setToggleCart={setToggleCart} />
+
+			{toggleCart && <Cart setToggleCart={setToggleCart} />}
 
 			<Routes>
 				<Route path='/' element={<Home />} />

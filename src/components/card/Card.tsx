@@ -10,7 +10,7 @@ const Card = () => {
 
 	return (
 		<div
-			className='text-darkgrey bg-white rounded-md shadow-md cursor-pointer'
+			className='text-darkgrey text-center bg-white rounded-md shadow-md cursor-pointer'
 			onClick={() => handleClick(1)}>
 			<div className='w-40'>
 				<img

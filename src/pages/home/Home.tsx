@@ -33,7 +33,7 @@ const Home = () => {
 						<Card />
 					</div>
 
-					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold'>
+					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
 						See More
 					</button>
 				</div>
@@ -52,7 +52,7 @@ const Home = () => {
 						<Card />
 					</div>
 
-					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold'>
+					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
 						See More
 					</button>
 				</div>
