@@ -1,6 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const ProductList = () => {
+
+
+	const params = useParams()
+
 	return (
 		<div>
 			<section>
@@ -11,7 +16,7 @@ const ProductList = () => {
 				/>
 
 				<p className='container relative mx-auto mt-14 p-5 text-6xl font-bold z-10'>
-					Men
+					{params.category}
 				</p>
 			</section>
 
