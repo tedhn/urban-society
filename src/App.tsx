@@ -21,7 +21,13 @@ function App() {
 					<Route path=':category' element={<ProductList />} />
 				</Route>
 
-				<Route path='wishlist' element={<Wishlist />} />
+				<Route path='products'>
+					<Route path=':productId' element={<ProductDetails />} />
+				</Route>
+
+				<Route path='wishlist' element={<Wishlist />} >
+
+				</Route>
 			</Routes>
 
 			<Footer />
