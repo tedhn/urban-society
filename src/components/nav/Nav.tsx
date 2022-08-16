@@ -38,8 +38,8 @@ const Nav: React.FC<PropTypes> = ({ setToggleCart }) => {
 				</li>
 				<li
 					className='px-4 py-2 border-b-2  border-transparent  cursor-pointer'
-					onClick={() => handleNavClick("children")}>
-					Children
+					onClick={() => handleNavClick("kids")}>
+					Kids
 				</li>
 			</ul>
 
@@ -54,9 +54,9 @@ const Nav: React.FC<PropTypes> = ({ setToggleCart }) => {
 						viewBox='0 0 20 20'
 						fill='currentColor'>
 						<path
-							fill-rule='evenodd'
+							fillRule='evenodd'
 							d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'
-							clip-rule='evenodd'
+							clipRule='evenodd'
 						/>
 					</svg>
 				</li>
@@ -76,9 +76,9 @@ const Nav: React.FC<PropTypes> = ({ setToggleCart }) => {
 						viewBox='0 0 20 20'
 						fill='currentColor'>
 						<path
-							fill-rule='evenodd'
+							fillRule='evenodd'
 							d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z'
-							clip-rule='evenodd'
+							clipRule='evenodd'
 						/>
 					</svg>
 				</li>

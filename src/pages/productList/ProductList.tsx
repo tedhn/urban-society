@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { catergoryType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
 import Search from "../../components/search/Search";
+import  { getCategoryData, getShoesInCategory } from "../../shoes.data";
 
 const ProductList = () => {
 	const params = useParams();
+
+	const [shoes, setShoes] = useState<Array<shoeType>>([]);
+	const [category , setCategory] = useState<catergoryType>({})
+	 
+
+	// loading the data on 1st render
+	useEffect(() => {
+		const shoeData = getShoesInCategory(params.category!)
+
+		const categoryData = getCategoryData(params.category!)
+
+
+		console.log(categoryData)
+		setCategory(categoryData)
+		setShoes(shoeData)
+	},[])
 
 	return (
 		<div>
 			<section>
 				<img
-					src='../../src/images/productlist-banner.jpg'
+					src={category.imageUrl}
 					className='absolute h-60 w-full top-0 object-cover object-center brightness-75'
 					alt='404'
 				/>
 
 				<p className='container relative mx-auto mt-14 p-5 text-6xl font-bold z-10'>
-					{params.category}
+					{category.name}
 				</p>
 			</section>
 
@@ -26,16 +44,9 @@ const ProductList = () => {
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
+					{shoes.map((shoe ,index)=>{
+						return <Card shoe={shoe} key={index}/>
+					})}
 				</div>
 			</section>
 		</div>

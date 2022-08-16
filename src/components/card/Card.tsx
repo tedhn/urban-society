@@ -1,29 +1,32 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { shoeType } from "../../../custom";
 
-const Card = () => {
+interface propTypes {
+	shoe: shoeType;
+}
+
+const Card: React.FC<propTypes> = ({ shoe }) => {
+	const { name, price, imageUrl, id } = shoe;
+
 	const navigate = useNavigate();
 
-	const handleClick = (productId: number) => {
-		navigate(`/products/${productId}`);
+	const handleClick = () => {
+		navigate(`/products/${id}`);
 	};
 
 	return (
 		<div
-			className='text-darkgrey text-center bg-white rounded-md shadow-md cursor-pointer'
-			onClick={() => handleClick(1)}>
+			className='p-2 flex flex-col items-center justify-center text-darkgrey text-center bg-white rounded-md shadow-md cursor-pointer'
+			onClick={handleClick}>
 			<div className='w-40'>
-				<img
-					src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hhbg01fgmufmdu6go6u0/lebron-17-basketball-shoe-FKCmbK.jpg'
-					alt='404'
-					className='rounded-t-md'
-				/>
+				<img src={imageUrl} alt='404' className='rounded-t-md' />
 			</div>
 
-			<div className='font-medium py-2'>
-				<p className='text-base'>LeBron 17</p>
-				<p className='text-sm'>$260</p>
-			</div>
+			<p className='w-40 pt-2 font-medium text-base text-ellipsis whitespace-nowrap overflow-hidden '>
+				{name}
+			</p>
+			<p className='pb-2 text-sm'>${price}</p>
 		</div>
 	);
 };
