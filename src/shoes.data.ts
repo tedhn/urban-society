@@ -1353,6 +1353,232 @@ const KIDS_SHOE_DATA = {
 		},
 	],
 };
+
+const NEW_ARRIVALS = [
+	{
+		id: 60,
+		type: "Older Kids' Running Shoe",
+		name: "Nike Star Runner 2",
+		description:
+			"Shoot for the stars in the Nike Star Runner 2. It's lightweight and durable for out-of-this-world comfort. Peek underneath to reveal stars moulded into the sole to help you orbit around your next route.",
+		colour: "Black/Black/White/Sunset Pulse",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ggkegecz2fj0uxf9d4om/star-runner-2-older-running-shoe-CcvWQp.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/nb2es8ydztw8fzayxlxy/star-runner-2-older-running-shoe-CcvWQp.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/hiyp9jtm3exrfyy47wvg/star-runner-2-older-running-shoe-CcvWQp.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/rgcjm4lkeb4g1ofjubvx/star-runner-2-older-running-shoe-CcvWQp.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/gq5prgmpmq36lif7bune/star-runner-2-older-running-shoe-CcvWQp.jpg",
+			"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/wphcf3gfl2waiyh00nhw/star-runner-2-older-running-shoe-CcvWQp.jpg",
+		],
+		price: 65,
+		tags: ["lifestyle", "walking", "running"],
+	},
+	{
+		id: 19,
+		type: "Women's Tennis Shoe",
+		name: "NikeCourt Flare 2",
+		description:
+			"As our only female-specific design, the NikeCourt Flare 2 QS takes inspiration from Serena Williams' on-court shoe. It combines speed and style with lightweight cushioning and a supportive lacing system.",
+		colour: "Phantom/Metallic Gold/Metallic Gold/Phantom",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/k7virvtnbzgomtwxxflt/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/h8d2zjwnlkt5rhxabpv2/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/riiawqxh8btyb2pkrwee/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/kz6eodkskvpg1fztmddb/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/dsqkfhzuww0dukzywqdo/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/azxu0royhqivjplfrwju/nikecourt-flare-2-hard-court-tennis-shoe-JGVBm4.jpg",
+		],
+		price: 165,
+		tags: ["lifestyle", "tennis"],
+	},
+	{
+		id: 20,
+		type: "Racing Shoe",
+		name: "Nike Zoom Victory 3",
+		description:
+			"The Nike Zoom Victory 3 Racing Spike features a minimal design for an ultra-lightweight feel and innovative spike plate that combines zones of stiffness and flexibility for incredible propulsion. Ideal for 1500m to 5K events.",
+		colour: "Hydrogen Blue/Sky Grey/Metallic Silver/Black",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ef815e2e-11e2-4b74-83eb-89bab09512a3/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/40cfec2d-4f33-42a3-bca3-c11616687e4f/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/094c62ee-ee11-4863-b7f5-b05ea18bb243/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/17ebd6b5-e4bf-4071-8706-34f8431ef52f/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/e15f2ff7-bd0d-4865-b9d6-35c8bc709f61/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/2871b4f3-4c8b-4cbb-9191-ff7a08748b0b/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/81eaff77-424a-406e-9423-d8ad1c98e2b3/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/de6e1b50-2322-41f9-9a91-cc6b965fd2c7/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/2e341168-333e-4ebb-ba0d-07959c8ac4de/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/2fd37d59-4e4c-4775-b2e6-2cde1112b176/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/f078a912-e5a9-4d67-9278-bfb3ae0026ac/zoom-victory-3-racing-shoe-7BTDPz90.jpg",
+		],
+		price: 165,
+		tags: ["lifestyle", "atheltics"],
+	},
+	{
+		id: 31,
+		name: "PG 4",
+		type: "Basketball shoe",
+		description:
+			"Paul George is the rare high-percentage shooter who's also a coach's dream on D. Designed for his unrivalled 2-way game, the PG 4 unveils a new cushioning system that's lightweight, articulated and responsive, ideal for players like PG who go hard every play.",
+		colour: "White/Pure Platinum/Black",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-5968d983-afa3-43f8-b3c9-803941e88956/pg-4-basketball-shoe-4NzGtl.jpg",
+		videoUrl:
+			"https://static.nike.com/a/videos/q_90,vc_vp9/2ce6059a-4d9f-41ed-8574-106042bf9edb/video.webm",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-e2673b9e-3672-4be3-b2d7-8fbfe35aec00/pg-4-basketball-shoe-4NzGtl.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-ac6e4f72-b14e-41cd-9f07-c27cc12162ea/pg-4-basketball-shoe-4NzGtl.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-d80ba59e-8d22-4a09-9696-e3cbade612b3/pg-4-basketball-shoe-4NzGtl.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-6ac0e5aa-c14a-4b6c-9050-837c93797d9b/pg-4-basketball-shoe-4NzGtl.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-87db071b-0b82-4621-91ea-95d1c3be460c/pg-4-basketball-shoe-4NzGtl.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-3a197cff-26ee-43f4-8278-7a44206e11dc/pg-4-basketball-shoe-4NzGtl.jpg",
+		],
+		price: 145,
+		tags: ["lifestyle", "basketball", "athletics"],
+	},
+	{
+		id: 32,
+		name: "Nike Air Zoom Pegasus 36 Trail",
+		type: "Men's Trail Running Shoe",
+		description:
+			"An icon trades pavement for path with the Nike Air Zoom Pegasus 36 Trail. A perforated mesh upper adds breathability, as double Zoom Air units underfoot cushion your stride. Opposing lugs on the outsole optimise traction on your uphill climbs.",
+		colour: "Aura/Light Armoury Blue/Mint Foam/Blackened Blue",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/06799cfa-f860-4a95-995d-71f2b9f3a5e2/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+		videoUrl:
+			"https://static.nike.com/a/videos/q_90,vc_vp9/ewbafifauqo82mlnu3gh/video.webm",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/350b6be0-4bf8-4ba6-8dc3-2f59ce8ed60d/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/9b99b915-c851-4030-bdcf-9fcdc0f29fd3/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/1080f568-4ac0-490f-9a93-67943baef81f/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/95390c4f-a543-4765-916d-c28589f36a3d/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/524d5ffb-3849-4dac-abc7-37bf8c78fb22/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/78f6e8d2-a2d3-4b1f-823a-4c1c8575fab2/air-zoom-pegasus-36-trail-trail-running-shoe-zdtVpM.jpg",
+		],
+		price: 165,
+		tags: ["lifestyles", "walking shoes"],
+	},
+];
+
+const HIGHGLIGHTS = [
+	{
+		id: 50,
+		type: "Older Kids' Shoe",
+		name: "Freak 1",
+		description:
+			"Find your inner Greek Freak in this debut signature shoe scaled for older kids. Giannis Antetokounmpo's Freak 1 builds in responsive cushioning, forefoot lockdown and multi-directional traction to create a shoe that can keep up with the positionless players of the next generation. 'I am my father's legacy' is printed on the bottom to give you a peek into the Greek Freak's inspiration.",
+		colour: "White/Black/White",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-3c21de03-4273-4381-b5d5-bec6daadda75/freak-1-older-shoe-MtXdG4.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-76a20b80-3f37-4c16-bdb0-908496c730d7/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-43562772-efdc-4332-8554-c376e7f24007/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-13671856-0e5e-4b6f-9707-ed6ae8124a2f/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-a1decbed-7000-4f19-9597-8fcaf3d0448c/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-7de3699b-220e-4941-a90c-d75b67c94622/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-95aa54bd-bc66-4d0b-ba62-b9ccf4c7de27/freak-1-older-shoe-MtXdG4.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-361b2e8d-f26c-48f7-889c-bf43101bb362/freak-1-older-shoe-MtXdG4.jpg",
+		],
+		price: 120,
+		tags: ["lifestyle", "basketball"],
+	},
+	{
+		id: 51,
+		type: "Older Kids' Football Boot",
+		name: "Nike Jr. Phantom Vision 2 Elite Dynamic Fit MG",
+		description:
+			"The Nike Jr. Phantom Vision 2 Elite Dynamic Fit MG brings a new level of fierce precision to the pitch. A comfortable inner sleeve is concealed in a Flyknit constructed outer layer to create a boot for the finishers, the providers and the battlers of tomorrow's game.",
+		colour: "Laser Crimson/Black/Black/Metallic Silver",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/6cd02718-643d-4e78-b253-a88ba9c53c3f/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/a8eda8f7-d40a-4c6b-a239-a695eb7eb572/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/871db434-8dfb-4903-bdb7-ba919bbd8f85/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/78126324-e2f9-4e38-b8e5-df26df8e73c3/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/ae03b968-de0a-4195-a4ad-15ddee83e650/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/2a215afb-d23a-4d37-be39-543c1477020e/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/e4707b26-d4f6-40e0-9980-0192f70df338/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/f10d598a-818d-488c-b947-b5ebef54f80a/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/3ee3e628-2b76-42ac-90ae-c38088d2b1a4/jr-phantom-vision-2-elite-dynamic-fit-mg-older-multi-ground-football-boot-fnbg1f.jpg",
+		],
+		price: 230,
+		tags: ["lifestyle", "football"],
+	},
+	{
+		id: 24,
+		type: "Men's Skate Shoe",
+		name: "Nike SB Air Max Stefan Janoski 2",
+		description:
+			"The Nike SB Air Max Stefan Janoski 2 hugs your foot with a breathable textile upper. A Max Air unit in the heel cushions every step, while a flat rubber outsole optimises grip when you're on your board.",
+		colour: "White/Celestial Gold/Gum Light Brown/Obsidian",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/dpwuzaavztberafce5bd/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/ehlyzr55fnsldcs6xsqi/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/h9ejbup4pc9usl87gn7u/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/dfqwoxctaze5wltgfxbg/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/ylbdenp1kg5qaz14nzqn/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/yjzytxpqk4dkdfsexr3r/sb-air-max-stefan-janoski-2-skate-shoe-s05dbb.jpg",
+		],
+		price: 145,
+		tags: ["lifestyle", "skateboarding"],
+	},
+	{
+		id: 25,
+		type: "Skate Shoe",
+		name: "Nike SB GTS Return Premium",
+		description:
+			"Infused with Nike DNA, the Nike SB GTS Return Premium puts an iconic spin on a classic skate silhouette. Its reinvented design updates the classic cupsole for a more flexible, lightweight feel right out of the box.",
+		colour: "Cobblestone/Monarch/Black/Black",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c2073dc7-7290-4d9f-b839-395f6aa5f740/sb-gts-return-skate-shoe-d2B7J5.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/c886d6ee-701b-4b8a-8339-69acc0d416da/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/ac5ea4fc-605e-48b5-88c7-2284d651625e/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/13f2d0d5-5624-4033-be7b-8ae04ff40e33/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/af0c9103-434a-42b2-97bf-228d1512d6d0/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/f6603d46-37b8-46ba-9f55-550ccec65853/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/3f65893a-1aec-4a62-ba4f-d69193b8346f/sb-gts-return-skate-shoe-d2B7J5.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/9b9f10d5-f453-4b21-a48c-07a162519e79/sb-gts-return-skate-shoe-d2B7J5.jpg",
+		],
+		price: 120,
+		tags: ["lifestyle", "skateboarding"],
+	},
+	{
+		id: 26,
+		type: "Golf Shoe",
+		name: "Nike React Infinity Pro",
+		description:
+			"Built with revolutionary cushioning and innovative traction, the Nike React Infinity Pro gives you the support, comfort and grip you need to play at your best.",
+		colour: "White/Black",
+		imageUrl:
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-825ac313-6bb1-4866-9295-14da3de7b9ed/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+		videoUrl: "",
+		images: [
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-c9c2bd66-0ed6-4e46-90b2-624b285a46d6/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-3eee2673-b5e7-4f61-8b7a-4c2335fb6bca/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-119d8488-7c11-40f4-a6ec-b9e52793fc31/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-97faabc7-2aca-4eea-ba36-24ce9a477122/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-714897c4-bc55-4956-824e-9a78d6e2cf96/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-cf4e4823-257e-4f83-8be2-6327a0f9c1e7/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-7d0ed8dc-fe43-4d43-9ad0-2636318d24e2/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+			"https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/i1-011bc3c1-c27b-4995-8070-b285af7153ef/react-infinity-pro-golf-shoe-DPBNlg.jpg",
+		],
+		price: 160,
+		tags: ["lifestyle", "golf"],
+	},
+];
+
 const getShoesInCategory = (
 	category: string,
 	start: number = 0,
@@ -1397,4 +1623,50 @@ const getCategoryData = (category: string) => {
 	}
 };
 
-export { getShoesInCategory, getCategoryData };
+const getNewArrivals = () => NEW_ARRIVALS;
+const getHighlights = () => HIGHGLIGHTS;
+
+const getProductData = (id: any) => {
+	console.log(id);
+	if (id <= 20) {
+		return WOMEN_SHOE_DATA.items.filter((shoe) => shoe.id === id)[0];
+	} else if (id <= 40) {
+		return MEN_SHOE_DATA.items.filter((shoe) => shoe.id === id)[0];
+	} else {
+		return KIDS_SHOE_DATA.items.filter((shoe) => shoe.id === id)[0];
+	}
+};
+const getRelatedProductData = (id: number) => {
+	if (id <= 20) {
+		return getRandomShoes(1);
+	} else if (id <= 40) {
+		return getRandomShoes(2);
+	} else {
+		return getRandomShoes(3);
+	}
+};
+
+const getRandomShoes = (category: number) => {
+	let randomShoe = [];
+	while (randomShoe.length < 5) {
+		const randomId = Math.floor(Math.random() * 20) - 1;
+
+		if (category === 1) {
+			randomShoe.push(WOMEN_SHOE_DATA.items[randomId]);
+		} else if (category === 2) {
+			randomShoe.push(MEN_SHOE_DATA.items[randomId]);
+		} else {
+			randomShoe.push(KIDS_SHOE_DATA.items[randomId]);
+		}
+	}
+	return randomShoe;
+};
+
+export {
+	getShoesInCategory,
+	getCategoryData,
+	getNewArrivals,
+	getHighlights,
+	getProductData,
+	getRelatedProductData,
+};

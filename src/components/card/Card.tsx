@@ -12,6 +12,7 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
+		
 		navigate(`/products/${id}`);
 	};
 

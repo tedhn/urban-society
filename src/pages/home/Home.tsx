@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
+import { getHighlights, getNewArrivals } from "../../shoes.data";
 
 const Home = () => {
+	const [newArrival, setNewArrival] = useState<Array<shoeType>>([]);
+
+	const [highLights, setHighlights] = useState<Array<shoeType>>([]);
+
+	useEffect(() => {
+		const newArrivalData = getNewArrivals();
+		const highlightsData = getHighlights();
+
+		setNewArrival(newArrivalData);
+		setHighlights(highlightsData);
+	});
+
 	return (
 		<div>
 			<section className='container h-screen mx-auto'>
@@ -26,11 +40,9 @@ const Home = () => {
 					<h2 className='text-2xl font-bold'>New Arrivals</h2>
 
 					<div className='flex flex-wrap justify-center gap-10 my-20'>
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
+						{newArrival.map((shoe, index) => (
+							<Card shoe={shoe} key={index} />
+						))}
 					</div>
 
 					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
@@ -46,10 +58,9 @@ const Home = () => {
 					</p>
 
 					<div className='flex flex-wrap justify-center gap-10 my-20'>
-						<Card />
-						<Card />
-						<Card />
-						<Card />
+						{highLights.map((shoe, index) => (
+							<Card shoe={shoe} key={index} />
+						))}
 					</div>
 
 					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
