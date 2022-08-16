@@ -22,18 +22,20 @@ const ProductDetails = () => {
 	});
 	const [relatedProducts, setRelatedProducts] = useState<Array<shoeType>>([]);
 	const [displayImage, setDisplayImage] = useState<string>("");
+	const [quantity, setQuantity] = useState<number>(1);
+	const [selectedShoeSize, setShoeSize] = useState<number>(0);
 
 	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
 	useEffect(() => {
-		console.log(params);
 		const productData = getProductData(Number(params.productId));
 		const relatedProductData = getRelatedProductData(Number(params.productId));
 
 		setProduct(productData);
 		setDisplayImage(productData.imageUrl);
 		setRelatedProducts(relatedProductData);
-	}, [params.id]);
+		window.scrollTo(0, 0);
+	}, [params.productId]);
 
 	return (
 		<div className='container mx-auto py-20'>
@@ -70,13 +72,23 @@ const ProductDetails = () => {
 
 					<p className='font-medium text-sm'>Shoe Size</p>
 					<ul className='flex gap-3'>
-						{shoeSizes.map((shoeSize, index) => (
-							<li
-								className='bg-offwhite text-xl text-darkgrey font-medium rounded-md p-2 cursor-pointer'
-								key={index}>
-								{shoeSize}
-							</li>
-						))}
+						{shoeSizes.map((shoeSize, index) => {
+							return selectedShoeSize === shoeSize ? (
+								<li
+									className='bg-offwhite text-xl text-darkgrey font-medium rounded-md p-2 cursor-pointer'
+									key={index}
+									onClick={() => setShoeSize(shoeSize)}>
+									{shoeSize}
+								</li>
+							) : (
+								<li
+									className='bg-offwhite text-xl text-darkgrey font-medium rounded-md p-2 cursor-pointer brightness-50'
+									key={index}
+									onClick={() => setShoeSize(shoeSize)}>
+									{shoeSize}
+								</li>
+							);
+						})}
 					</ul>
 
 					<div className='flex gap-5 items-center my-4'>
@@ -86,6 +98,7 @@ const ProductDetails = () => {
 									xmlns='http://www.w3.org/2000/svg'
 									viewBox='0 0 20 20'
 									className='h-5 w-5'
+									onClick={() => setQuantity(quantity - 1)}
 									fill='currentColor'>
 									<path
 										fillRule='evenodd'
@@ -94,12 +107,15 @@ const ProductDetails = () => {
 									/>
 								</svg>
 							</button>
-							<div className='font-medium text-2xl mx-5'>1</div>
+							<div className='font-medium text-2xl mx-5 w-5 text-center'>
+								{quantity}
+							</div>
 							<button>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									viewBox='0 0 20 20'
 									className='h-5 w-5'
+									onClick={() => setQuantity(quantity + 1)}
 									fill='currentColor'>
 									<path
 										fillRule='evenodd'

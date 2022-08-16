@@ -20,6 +20,7 @@ const ProductList = () => {
 		console.log(categoryData);
 		setCategory(categoryData);
 		setShoes(shoeData);
+		window.scrollTo(0, 0);
 	}, [params.category]);
 
 	return (

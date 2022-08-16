@@ -1627,7 +1627,6 @@ const getNewArrivals = () => NEW_ARRIVALS;
 const getHighlights = () => HIGHGLIGHTS;
 
 const getProductData = (id: any) => {
-	console.log(id);
 	if (id <= 20) {
 		return WOMEN_SHOE_DATA.items.filter((shoe) => shoe.id === id)[0];
 	} else if (id <= 40) {
