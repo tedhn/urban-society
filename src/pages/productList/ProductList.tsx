@@ -14,10 +14,8 @@ const ProductList = () => {
 	// loading the data on 1st render and whenever category changes
 	useEffect(() => {
 		const shoeData = getShoesInCategory(params.category!);
-
 		const categoryData = getCategoryData(params.category!);
 
-		console.log(categoryData);
 		setCategory(categoryData);
 		setShoes(shoeData);
 		window.scrollTo(0, 0);

@@ -24,4 +24,22 @@ interface catergoryType {
 	imageUrl?: string;
 }
 
-export { shoeType, catergoryType };
+
+interface cartItemsTypes {
+	name: string;
+	image: string;
+	price: number;
+	quantity: number;
+	shoeSize: number;
+}
+
+
+interface cartContextType {
+	cartItems: Array<cartItemsTypes>;
+	updateCart: (name : string , quantity : number) => void;
+	addToCart: ({name, price, quantity, shoeSize , image} : cartItemsTypes) => void;
+	removeFromCart: (name : string , shoeSize) => void;
+}
+
+
+export { shoeType, catergoryType, cartContextType, cartItemsTypes };

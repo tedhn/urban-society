@@ -7,12 +7,11 @@ interface propTypes {
 }
 
 const Card: React.FC<propTypes> = ({ shoe }) => {
-	const { name, price, imageUrl, id } = shoe;
+	const { name = "", price = 0, imageUrl = "", id = "" } = shoe;
 
 	const navigate = useNavigate();
 
 	const handleClick = () => navigate(`/products/${id}`);
-
 
 	return (
 		<div

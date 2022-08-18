@@ -1,16 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ReactComponent as HeartSVG } from "../../svg/heart.svg";
-import { ReactComponent as CartSVG } from "../../svg/cart.svg";
-import { ReactComponent as UserSVG } from "../../svg/user.svg";
+
 import Search from "../search/Search";
 
-interface PropTypes {
-	setToggleCart: any;
-}
 
-const Nav: React.FC<PropTypes> = ({ setToggleCart }) => {
+
+const Nav = () => {
 	const navigate = useNavigate();
 
 	const handleNavClick = (category: string) => {
@@ -60,7 +56,7 @@ const Nav: React.FC<PropTypes> = ({ setToggleCart }) => {
 						/>
 					</svg>
 				</li>
-				<li className=' cursor-pointer' onClick={() => setToggleCart(true)}>
+				<li className=' cursor-pointer' onClick={()=>navigate('/cart')}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						className='h-5 w-5'

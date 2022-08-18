@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { shoeType } from "../../../custom";
+import { cartContextType, shoeType } from "../../../custom";
 
 import Card from "../../components/card/Card";
 import { getProductData, getRelatedProductData } from "../../shoes.data";
+import { CartContext } from "../../useContext/cartContext";
 
 const ProductDetails = () => {
 	const params = useParams();
+
+	const { addToCart } = useContext(CartContext) as cartContextType;
 
 	const [product, setProduct] = useState<shoeType>({
 		name: "",
@@ -23,7 +26,7 @@ const ProductDetails = () => {
 	const [relatedProducts, setRelatedProducts] = useState<Array<shoeType>>([]);
 	const [displayImage, setDisplayImage] = useState<string>("");
 	const [quantity, setQuantity] = useState<number>(1);
-	const [selectedShoeSize, setShoeSize] = useState<number>(0);
+	const [selectedShoeSize, setShoeSize] = useState<number>(38);
 
 	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
@@ -65,12 +68,12 @@ const ProductDetails = () => {
 					</div>
 				</div>
 
-				<div className='flex flex-col gap-3'>
-					<h2 className='font-bold text-5xl'>{product.name}</h2>
+				<div className='flex flex-col gap-3 w-1/2'>
+					<h2 className='font-bold text-5xl text-wrap'>{product.name}</h2>
 					<p className='font-light text-sm max-w-lg'>{product.description}</p>
 					<p className='font-medium text-2xl my-4'>${product.price}</p>
 
-					<p className='font-medium text-sm'>Shoe Size</p>
+					<p className='font-medium text-sm'>Shoe Size : {selectedShoeSize}</p>
 					<ul className='flex gap-3'>
 						{shoeSizes.map((shoeSize, index) => {
 							return selectedShoeSize === shoeSize ? (
@@ -126,7 +129,18 @@ const ProductDetails = () => {
 							</button>
 						</div>
 
-						<button className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm'>
+						<button
+							className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm'
+							onClick={() =>
+								addToCart({
+									name: product.name,
+									price: product.price,
+									quantity,
+									shoeSize: selectedShoeSize,
+									image : product.imageUrl,
+									
+								})
+							}>
 							Add to Cart
 						</button>
 					</div>
