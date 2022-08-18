@@ -1,3 +1,4 @@
+import { WishlistContext } from './src/useContext/wishlistContext';
 declare module "*.svg" {
 	import React = require("react");
 	export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -41,5 +42,23 @@ interface cartContextType {
 	removeFromCart: (name : string , shoeSize) => void;
 }
 
+interface wishtlistItemTypes {
+	name: string;
+	image: string;
+	price: number;
+	shoeSize: number;
+}
 
-export { shoeType, catergoryType, cartContextType, cartItemsTypes };
+interface wishlistContextType {
+	wishlistItems: Array<wishlistItemTypes>;
+	addToWishlist: ({
+		name,
+		price,
+		shoeSize,
+		image,
+	}: wishlistItemsTypes) => void;
+	removeFromWishlist: (name: string) => void;
+}
+
+
+export { shoeType, catergoryType, cartContextType, cartItemsTypes  , wishtlistItemTypes , wishlistContextType};

@@ -31,8 +31,8 @@ const Cart: React.FC = () => {
 										<img className='object-fit' src={item.image} alt='404' />
 									</div>
 
-									<p className='font-medium text-sm'>{item.name}</p>
-									<p className='font-medium text-sm'>
+									<p className='font-medium text-sm grow text-left'>{item.name}</p>
+									<p className='font-medium text-sm '>
 										Shoe Size : {item.shoeSize}
 									</p>
 									<div className='flex gap-1'>

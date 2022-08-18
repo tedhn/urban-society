@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { cartContextType, shoeType } from "../../../custom";
+import { cartContextType, shoeType, wishlistContextType } from "../../../custom";
 
 import Card from "../../components/card/Card";
 import { getProductData, getRelatedProductData } from "../../shoes.data";
 import { CartContext } from "../../useContext/cartContext";
+import { WishlistContext } from "../../useContext/wishlistContext";
 
 const ProductDetails = () => {
 	const params = useParams();
 
 	const { addToCart } = useContext(CartContext) as cartContextType;
+	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
 
 	const [product, setProduct] = useState<shoeType>({
 		name: "",
@@ -137,8 +139,7 @@ const ProductDetails = () => {
 									price: product.price,
 									quantity,
 									shoeSize: selectedShoeSize,
-									image : product.imageUrl,
-									
+									image: product.imageUrl,
 								})
 							}>
 							Add to Cart
@@ -166,7 +167,16 @@ const ProductDetails = () => {
 							Want a discount? Become a member!
 						</p>
 					</div>
-					<div className='flex gap-1 items-center'>
+					<div
+						className='flex gap-1 items-center'
+						onClick={() =>
+							addToWishlist({
+								name: product.name,
+								price: product.price,
+								shoeSize: selectedShoeSize,
+								image: product.imageUrl,
+							})
+						}>
 						<div>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'

@@ -28,7 +28,7 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 	const addToCart = ({
 		name,
 		price,
-		quantity,
+		quantity = 1,
 		shoeSize,
 		image
 	}: cartItemsTypes) => {
