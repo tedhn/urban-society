@@ -15,7 +15,7 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 
 	return (
 		<div
-			className='p-2 flex flex-col items-center justify-center text-darkgrey text-center bg-white rounded-md shadow-md cursor-pointer'
+			className='p-2 flex flex-col items-center justify-center text-darkgrey text-center bg-white rounded-md shadow-md cursor-pointer transform hover:scale-105 duration-300 ease-in-out'
 			onClick={handleClick}>
 			<div className='w-40'>
 				<img src={imageUrl} alt='404' className='rounded-t-md' />

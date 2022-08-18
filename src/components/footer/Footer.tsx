@@ -6,44 +6,52 @@ const Footer = () => {
 			<div className='container mx-auto p-5 '>
 				<div className='flex justify-around p-5'>
 					<ul>
-						<h3 className='text-base font-bold mb-4 uppercase'>Info</h3>
+						<h3 className='px-2 text-base font-bold uppercase'>Info</h3>
 
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							My account
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>Shipping</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
+							Shipping
+						</li>
+						<li className='footer-link'>
 							Return/Exchange Policy
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							Privacy Policy
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							Contact us
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>FAQ</li>
+						<li className='footer-link'>
+							FAQ
+						</li>
 					</ul>
 					<ul>
-						<h3 className='text-base font-bold mb-4 uppercase'>About us</h3>
+						<h3 className='px-2 text-base font-bold uppercase'>About us</h3>
 
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							Store location
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							Customer Care
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
 							Company Profile
 						</li>
 					</ul>
 					<ul>
-						<h3 className='text-base font-bold mb-4 uppercase'>Follow Us on</h3>
+						<h3 className='px-2 text-base font-bold uppercase'>Follow Us on</h3>
 
-						<li className='font-light text-sm mb-1 cursor-pointer'>Facebook</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>
+						<li className='footer-link'>
+							Facebook
+						</li>
+						<li className='footer-link'>
 							Instagram
 						</li>
-						<li className='font-light text-sm mb-1 cursor-pointer'>Twitter</li>
+						<li className='footer-link'>
+							Twitter
+						</li>
 					</ul>
 				</div>
 				<p className='font-light text-xs text-center'>

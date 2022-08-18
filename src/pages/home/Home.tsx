@@ -45,9 +45,9 @@ const Home = () => {
 						))}
 					</div>
 
-					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
+					{/* <button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
 						See More
-					</button>
+					</button> */}
 				</div>
 			</section>
 			<section className='container relative mx-auto my-20'>
@@ -63,9 +63,9 @@ const Home = () => {
 						))}
 					</div>
 
-					<button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
+					{/* <button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
 						See More
-					</button>
+					</button> */}
 				</div>
 			</section>
 		</div>

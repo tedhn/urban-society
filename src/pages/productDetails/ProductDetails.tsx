@@ -70,7 +70,7 @@ const ProductDetails = () => {
 					</div>
 				</div>
 
-				<div className='flex flex-col gap-3 w-1/2'>
+				<div className='flex flex-col gap-3'>
 					<h2 className='font-bold text-5xl text-wrap'>{product.name}</h2>
 					<p className='font-light text-sm max-w-lg'>{product.description}</p>
 					<p className='font-medium text-2xl my-4'>${product.price}</p>
