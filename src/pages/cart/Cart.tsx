@@ -19,7 +19,7 @@ const Cart: React.FC = () => {
 		<div className='conatiner min-h-screen px-4   text-center bg-darkgrey flex flex-col'>
 			<div className='mt-10 font-bold text-5xl mb-10'>Your Cart</div>
 
-			<div className='px-10  flex flex-col gap-10 overflow-y-auto grow'>
+			<div className='container  mx-auto px-10  flex flex-col gap-10 overflow-y-auto grow'>
 				{cartItems.length !== 0 ? (
 					<>
 						{cartItems.map((item, index) => {
@@ -31,7 +31,9 @@ const Cart: React.FC = () => {
 										<img className='object-fit' src={item.image} alt='404' />
 									</div>
 
-									<p className='font-medium text-sm grow text-left'>{item.name}</p>
+									<p className='font-medium text-sm grow text-left'>
+										{item.name}
+									</p>
 									<p className='font-medium text-sm '>
 										Shoe Size : {item.shoeSize}
 									</p>
@@ -40,7 +42,7 @@ const Cart: React.FC = () => {
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												viewBox='0 0 20 20'
-												className='h-5 w-5'
+												className='hoverBackgroundEffect rounded-md h-5 w-5'
 												onClick={() => updateCart(item.name, item.quantity - 1)}
 												fill='currentColor'>
 												<path
@@ -57,7 +59,7 @@ const Cart: React.FC = () => {
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												viewBox='0 0 20 20'
-												className='h-5 w-5'
+												className='hoverBackgroundEffect rounded-md h-5 w-5'
 												onClick={() => updateCart(item.name, item.quantity + 1)}
 												fill='currentColor'>
 												<path
@@ -71,7 +73,7 @@ const Cart: React.FC = () => {
 									<p>${item.price * item.quantity}</p>
 
 									<button
-										className='bg-danger px-4 py-2 rounded-md font-bold'
+										className='bg-danger px-4 py-2 rounded-md font-bold hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 										onClick={() => removeFromCart(item.name, item.shoeSize)}>
 										X
 									</button>
@@ -84,13 +86,13 @@ const Cart: React.FC = () => {
 				)}
 			</div>
 
-			<div className='relative right-0 bottom-0 mt-10 px-10'>
+			<div className='container mx-auto relative right-0 bottom-0 mt-10 px-10'>
 				<div className='flex justify-end text-end'>
 					<p className='font-medium text-lg'>Total</p>
 					<p className='ml-10 font-medium text-lg'>${totalPrice}</p>
 				</div>
 
-				<button className='mt-5 mb-10 px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm'>
+				<button className='mt-5 mb-10 px-4 py-2 font-medium text-lg text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'>
 					Checkout
 				</button>
 			</div>

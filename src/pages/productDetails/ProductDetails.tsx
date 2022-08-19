@@ -29,6 +29,7 @@ const ProductDetails = () => {
 	const [displayImage, setDisplayImage] = useState<string>("");
 	const [quantity, setQuantity] = useState<number>(1);
 	const [selectedShoeSize, setShoeSize] = useState<number>(38);
+	const [isLiked , setIsLiked] = useState<boolean>(false)
 
 	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
@@ -102,7 +103,7 @@ const ProductDetails = () => {
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									viewBox='0 0 20 20'
-									className='h-5 w-5'
+									className='hoverBackgroundEffect rounded-md h-5 w-5'
 									onClick={() => setQuantity(quantity - 1)}
 									fill='currentColor'>
 									<path
@@ -119,7 +120,7 @@ const ProductDetails = () => {
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									viewBox='0 0 20 20'
-									className='h-5 w-5'
+									className='hoverBackgroundEffect rounded-md h-5 w-5'
 									onClick={() => setQuantity(quantity + 1)}
 									fill='currentColor'>
 									<path
@@ -132,7 +133,7 @@ const ProductDetails = () => {
 						</div>
 
 						<button
-							className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm'
+							className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 							onClick={() =>
 								addToCart({
 									name: product.name,
@@ -162,35 +163,39 @@ const ProductDetails = () => {
 								/>
 							</svg>
 						</div>
-						<p className='font-light text-sm'>
-							{" "}
+						<p className='font-light text-sm cursor-pointer'>
 							Want a discount? Become a member!
 						</p>
 					</div>
 					<div
-						className='flex gap-1 items-center'
-						onClick={() =>
+						className='flex gap-1 items-center cursor-pointer'
+						onClick={() => {
 							addToWishlist({
 								name: product.name,
 								price: product.price,
 								shoeSize: selectedShoeSize,
 								image: product.imageUrl,
-							})
-						}>
+							});
+							setIsLiked(!isLiked);
+						}}>
 						<div>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
-								viewBox='0 0 20 20'
 								className='h-5 w-5'
-								fill='currentColor'>
+								fill={isLiked ? "#f43f5e" : "transparent"}
+								viewBox='0 0 24 24'
+								stroke={isLiked ? "#f43f5e" : "white"}
+								strokeWidth='2'>
 								<path
-									fillRule='evenodd'
-									d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'
-									clipRule='evenodd'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
 								/>
 							</svg>
 						</div>
-						<p className='font-light text-sm'> Add to Wishlist </p>
+						<p className='font-light text-sm'>
+							{isLiked ? "Already in WishList" : "Add to Wishlist"}
+						</p>
 					</div>
 				</div>
 			</div>

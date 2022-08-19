@@ -26,7 +26,7 @@ const ProductList = () => {
 			<section>
 				<img
 					src={category.imageUrl}
-					className='absolute h-60 w-full top-0 object-cover object-center brightness-75'
+					className='absolute h-60 w-full top-0 object-cover object-center brightness-50'
 					alt='404'
 				/>
 
@@ -36,8 +36,8 @@ const ProductList = () => {
 			</section>
 
 			<section className='container mx-auto'>
-				<div className='my-10 p-5 px-20 flex justify-end items-center gap-4'>
-					<Search hidden={false} />
+				<div className=' my-10 p-5 px-20 flex justify-end items-center gap-4'>
+					<Search />
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>

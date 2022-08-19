@@ -32,12 +32,12 @@ const Wishlist = () => {
 
 									<div className='flex gap-5'>
 										<button
-											className='px-4 py-2 font-medium  bg-danger rounded-sm'
+											className='px-4 py-2 font-medium  bg-danger rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 											onClick={() => removeFromWishlist(item.name)}>
 											X
 										</button>
 										<button
-											className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm'
+											className='px-4 py-2 font-medium text-lg text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 											onClick={() => addToCart(item)}>
 											Add to Cart
 										</button>

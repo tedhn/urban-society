@@ -6,11 +6,10 @@ import Search from "../search/Search";
 const Nav = () => {
 	const navigate = useNavigate();
 
-	const [isHidden, setIsHidden] = useState<boolean>(true);
 	const [isTransparent, setIsTransparent] = useState<boolean>(true);
 
 	window.addEventListener("scroll", () => {
-		if (window.scrollY > 200) {
+		if (window.scrollY > 150) {
 			setIsTransparent(false);
 		} else {
 			setIsTransparent(true);
@@ -57,8 +56,8 @@ const Nav = () => {
 				<ul className='flex font-bold items-center'>
 					<li
 						className='hoverBackgroundEffect relative p-2  flex items-center gap-3 rounded-md cursor-pointer'
-						onClick={() => setIsHidden(!isHidden)}>
-						<Search hidden={isHidden} />
+						>
+						<Search />
 					</li>
 					<li
 						className='hoverBackgroundEffect relative p-2 rounded-md cursor-pointer'

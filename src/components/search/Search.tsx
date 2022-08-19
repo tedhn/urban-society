@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-interface PropTypes {
-	hidden: boolean;
-}
 
-const Search: React.FC<PropTypes> = ({ hidden }) => {
+const Search = () => {
+
+	
+	const [isHidden, setIsHidden] = useState<boolean>(true);
+
 	return (
 		<>
 			<input
-				hidden={hidden}
+			hidden={isHidden}
 				type='text'
-				className='absolute -left-48 w-48 px-4 py-1 font-light text-xs border-2 rounded-full border-white/25 bg-transparent'
+				className='absolute -left-52 w-48 px-4 py-1 font-light text-xs border-2 rounded-full text-white border-white/50 bg-transparent'
 				placeholder='Search'
 			/>
 
@@ -19,6 +20,7 @@ const Search: React.FC<PropTypes> = ({ hidden }) => {
 				xmlns='http://www.w3.org/2000/svg'
 				className='h-5 w-5'
 				viewBox='0 0 20 20'
+				onClick={() => setIsHidden(!isHidden)}
 				fill='currentColor'>
 				<path
 					fillRule='evenodd'
