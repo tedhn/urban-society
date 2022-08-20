@@ -133,7 +133,7 @@ const ProductDetails = () => {
 						</div>
 
 						<button
-							className='px-4 py-2 font-medium text-xl text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
+							className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 							onClick={() =>
 								addToCart({
 									name: product.name,
@@ -203,7 +203,7 @@ const ProductDetails = () => {
 			<div className=' flex flex-col gap-5 items-center'>
 				<h2 className='font-bold text-xl'>Related Products</h2>
 
-				<div className='flex flex-wrap justify-center gap-10 py-20'>
+				<div className='flex flex-wrap justify-center gap-20 py-20'>
 					{relatedProducts.map((shoe, index) => {
 						return <Card shoe={shoe} key={index} />;
 					})}

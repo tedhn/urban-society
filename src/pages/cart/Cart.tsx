@@ -16,7 +16,7 @@ const Cart: React.FC = () => {
 	});
 
 	return (
-		<div className='conatiner min-h-screen px-4   text-center bg-darkgrey flex flex-col'>
+		<div className='container mx-auto px-4 text-center bg-darkgrey flex flex-col'>
 			<div className='mt-10 font-bold text-5xl mb-10'>Your Cart</div>
 
 			<div className='container  mx-auto px-10  flex flex-col gap-10 overflow-y-auto grow'>
@@ -80,21 +80,20 @@ const Cart: React.FC = () => {
 								</div>
 							);
 						})}
+						<div className='container mx-auto relative right-0 bottom-0 mt-10 px-10'>
+							<div className='flex justify-end text-end'>
+								<p className='font-medium text-lg'>Total</p>
+								<p className='ml-10 font-medium text-lg'>${totalPrice}</p>
+							</div>
+
+							<button className='mt-5 mb-10 px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'>
+								Checkout
+							</button>
+						</div>
 					</>
 				) : (
 					<div>Cart is empty</div>
 				)}
-			</div>
-
-			<div className='container mx-auto relative right-0 bottom-0 mt-10 px-10'>
-				<div className='flex justify-end text-end'>
-					<p className='font-medium text-lg'>Total</p>
-					<p className='ml-10 font-medium text-lg'>${totalPrice}</p>
-				</div>
-
-				<button className='mt-5 mb-10 px-4 py-2 font-medium text-lg text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'>
-					Checkout
-				</button>
 			</div>
 		</div>
 	);

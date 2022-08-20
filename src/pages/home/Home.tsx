@@ -39,9 +39,14 @@ const Home = () => {
 				<div className='text-center '>
 					<h2 className='text-2xl font-bold'>New Arrivals</h2>
 
-					<div className='flex flex-wrap justify-center gap-10 my-20'>
+					<div className='flex flex-wrap justify-center gap-16 my-20'>
 						{newArrival.map((shoe, index) => (
-							<Card shoe={shoe} key={index} />
+							<Card
+								shoe={shoe}
+								key={index}
+								tagColor='#FFD369'
+								tagText='New Arrival'
+							/>
 						))}
 					</div>
 
@@ -57,9 +62,14 @@ const Home = () => {
 						EXPLORE YOURSELF IN OUR NEW PRODUCTS' HIGHLIGHTS
 					</p>
 
-					<div className='flex flex-wrap justify-center gap-10 my-20'>
+					<div className='flex flex-wrap justify-center gap-16 my-20'>
 						{highLights.map((shoe, index) => (
-							<Card shoe={shoe} key={index} />
+							<Card
+								shoe={shoe}
+								key={index}
+								tagColor='#f87171'
+								tagText='50% Discount'
+							/>
 						))}
 					</div>
 

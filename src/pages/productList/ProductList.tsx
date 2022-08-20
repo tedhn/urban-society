@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { catergoryType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
-import Search from "../../components/search/Search";
 import { getCategoryData, getShoesInCategory } from "../../shoes.data";
 
 const ProductList = () => {
@@ -37,7 +36,8 @@ const ProductList = () => {
 
 			<section className='container mx-auto'>
 				<div className=' my-10 p-5 px-20 flex justify-end items-center gap-4'>
-					<Search />
+					<div>filter here</div>
+					<div>sorting here</div>
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>

@@ -9,10 +9,11 @@ import ProductList from "./pages/productList/ProductList";
 import Wishlist from "./pages/wishlist/Wishlist";
 import CartContextProvider from "./useContext/cartContext";
 import WishlistContextProvider from "./useContext/wishlistContext";
+import Search from "./pages/search/Search";
 
 function App() {
 	return (
-		<div className=''>
+		<div className='flex flex-col min-h-screen'>
 			<CartContextProvider>
 				<WishlistContextProvider>
 					<Nav />
@@ -26,10 +27,11 @@ function App() {
 						<Route path='products'>
 							<Route path=':productId' element={<ProductDetails />} />
 						</Route>
+						<Route path='search' element={<Search />} />
 
 						<Route path='wishlist' element={<Wishlist />} />
 						<Route path='cart' element={<Cart />} />
-					</Routes>{" "}
+					</Routes>
 					<Footer />
 				</WishlistContextProvider>
 			</CartContextProvider>

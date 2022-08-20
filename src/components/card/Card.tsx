@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { shoeType } from "../../../custom";
+import { shoeType, wishlistContextType } from "../../../custom";
+import { WishlistContext } from "../../useContext/wishlistContext";
 
 interface propTypes {
 	shoe: shoeType;
+	tagColor?: string;
+	tagText?: string;
 }
 
-const Card: React.FC<propTypes> = ({ shoe }) => {
-	const { name = "", price = 0, imageUrl = "", id = "" } = shoe;
+const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText }) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
 	const [isLiked, setIsLiked] = useState<boolean>(false);
 
+	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
+
 	const navigate = useNavigate();
 
-	const handleClick = () => navigate(`/products/${id}`);
+	const handleClick = () => navigate(`/products/${shoe.id}`);
 
 	return (
 		<div
@@ -22,7 +26,7 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 			onMouseLeave={() => setIsHover(false)}>
 			<div className='relative w-40 '>
 				<img
-					src={imageUrl}
+					src={shoe.imageUrl}
 					alt='404'
 					className='w-full obejct-cover rounded-t-md'
 				/>
@@ -33,6 +37,12 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 					className=' absolute bottom-2 w-40 text-center text-xs font-light cursor-pointer hover:underline '>
 					More Details
 				</p>
+
+				<div
+					className='absolute top-5 right-0 px-2 py-1 text-xs font-medium translate-x-1/2'
+					style={{ backgroundColor: tagColor }}>
+					{tagText}
+				</div>
 			</div>
 
 			<svg
@@ -42,7 +52,15 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 				fill={isLiked ? "#f43f5e" : "white"}
 				viewBox='0 0 24 24'
 				stroke={isLiked ? "#f43f5e" : "grey"}
-				onClick={() => setIsLiked(!isLiked)}
+				onClick={() => {
+					addToWishlist({
+						name: shoe.name,
+						price: shoe.price,
+						shoeSize: 0,
+						image: shoe.imageUrl,
+					});
+					setIsLiked(!isLiked);
+				}}
 				strokeWidth='2'>
 				<path
 					strokeLinecap='round'
@@ -52,9 +70,9 @@ const Card: React.FC<propTypes> = ({ shoe }) => {
 			</svg>
 
 			<p className='w-40 p-2 font-medium text-sm text-ellipsis whitespace-nowrap overflow-hidden '>
-				{name}
+				{shoe.name}
 			</p>
-			<p className='pb-2 text-sm'>${price}</p>
+			<p className='pb-2 text-sm'>${shoe.price}</p>
 		</div>
 	);
 };

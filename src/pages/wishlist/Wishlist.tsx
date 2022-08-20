@@ -10,8 +10,8 @@ const Wishlist = () => {
 	const { addToCart } = useContext(CartContext) as cartContextType;
 
 	return (
-		<div className='container min-h-screen mx-auto text-center'>
-			<h2 className='font-black text-4xl py-20 '>WishList</h2>
+		<div className='container mx-auto px-4   text-center bg-darkgrey flex flex-col'>
+			<h2 className='mt-10 font-bold text-5xl mb-10'>WishList</h2>
 
 			<div className='flex flex-col gap-5 px-10'>
 				{wishlistItems.length !== 0 ? (
@@ -37,7 +37,7 @@ const Wishlist = () => {
 											X
 										</button>
 										<button
-											className='px-4 py-2 font-medium text-lg text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
+											className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 											onClick={() => addToCart(item)}>
 											Add to Cart
 										</button>

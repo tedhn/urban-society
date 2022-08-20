@@ -1661,6 +1661,20 @@ const getRandomShoes = (category: number) => {
 	return randomShoe;
 };
 
+const searchForShoe = (searchQuery: string) => {
+	const womenResults = WOMEN_SHOE_DATA.items.filter((shoe) =>
+		shoe.name.toLowerCase().includes(searchQuery)
+	);
+	const menResults = MEN_SHOE_DATA.items.filter((shoe) =>
+		shoe.name.toLowerCase().includes(searchQuery)
+	);
+	const kidsResults = KIDS_SHOE_DATA.items.filter((shoe) =>
+		shoe.name.toLowerCase().includes(searchQuery)
+	);
+
+	return [...womenResults, ...menResults, ...kidsResults];
+};
+
 export {
 	getShoesInCategory,
 	getCategoryData,
@@ -1668,4 +1682,5 @@ export {
 	getHighlights,
 	getProductData,
 	getRelatedProductData,
+	searchForShoe,
 };
