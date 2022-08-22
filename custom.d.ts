@@ -1,4 +1,3 @@
-import { WishlistContext } from './src/useContext/wishlistContext';
 declare module "*.svg" {
 	import React = require("react");
 	export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -25,7 +24,6 @@ interface catergoryType {
 	imageUrl?: string;
 }
 
-
 interface cartItemsTypes {
 	name: string;
 	image: string;
@@ -34,12 +32,17 @@ interface cartItemsTypes {
 	shoeSize: number;
 }
 
-
 interface cartContextType {
 	cartItems: Array<cartItemsTypes>;
-	updateCart: (name : string , quantity : number) => void;
-	addToCart: ({name, price, quantity, shoeSize , image} : cartItemsTypes) => void;
-	removeFromCart: (name : string , shoeSize) => void;
+	updateCart: (name: string, quantity: number) => void;
+	addToCart: ({
+		name,
+		price,
+		quantity,
+		shoeSize,
+		image,
+	}: cartItemsTypes) => void;
+	removeFromCart: (name: string, shoeSize) => void;
 }
 
 interface wishtlistItemTypes {
@@ -51,14 +54,32 @@ interface wishtlistItemTypes {
 
 interface wishlistContextType {
 	wishlistItems: Array<wishlistItemTypes>;
-	addToWishlist: ({
-		name,
-		price,
-		shoeSize,
-		image,
-	}: wishlistItemsTypes) => void;
+	addToWishlist: ({ name, price, shoeSize, image }: wishlistItemsTypes) => void;
 	removeFromWishlist: (name: string) => void;
 }
 
+interface shoeDataType {
+	name: string;
+	price: number;
+	description: string;
+	colour: string;
+	imageUrl: string;
+	videoUrl: string;
+	type: string;
+}
 
-export { shoeType, catergoryType, cartContextType, cartItemsTypes  , wishtlistItemTypes , wishlistContextType};
+interface ShoeDataContextType {
+	getCategory : (category  : number) => Array
+	getShoe : (id  : string) => any
+}
+
+export {
+	shoeType,
+	catergoryType,
+	cartContextType,
+	cartItemsTypes,
+	wishtlistItemTypes,
+	wishlistContextType,
+	shoeDataType,
+	ShoeDataContextType,
+};

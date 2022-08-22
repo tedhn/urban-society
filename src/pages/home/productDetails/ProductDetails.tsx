@@ -1,17 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { cartContextType, shoeType, wishlistContextType } from "../../../custom";
+import {
+	cartContextType,
+	ShoeDataContextType,
+	shoeType,
+	wishlistContextType,
+} from "../../../../custom";
 
-import Card from "../../components/card/Card";
-import { getProductData, getRelatedProductData } from "../../shoes.data";
-import { CartContext } from "../../useContext/cartContext";
-import { WishlistContext } from "../../useContext/wishlistContext";
+import Card from "../../../components/card/Card";
+import { getRelatedProductData } from "../../../shoes.data";
+import { CartContext } from "../../../useContext/cartContext";
+import { ShoeDataContext } from "../../../useContext/shoeDataContext";
+import { WishlistContext } from "../../../useContext/wishlistContext";
 
 const ProductDetails = () => {
 	const params = useParams();
 
 	const { addToCart } = useContext(CartContext) as cartContextType;
 	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
+	const { getShoe } = useContext(ShoeDataContext) as ShoeDataContextType;
 
 	const [product, setProduct] = useState<shoeType>({
 		name: "",
@@ -25,30 +32,38 @@ const ProductDetails = () => {
 		videoUrl: "",
 		tags: [],
 	});
+	const [images, setImages] = useState([]);
 	const [relatedProducts, setRelatedProducts] = useState<Array<shoeType>>([]);
 	const [displayImage, setDisplayImage] = useState<string>("");
 	const [quantity, setQuantity] = useState<number>(1);
 	const [selectedShoeSize, setShoeSize] = useState<number>(38);
-	const [isLiked , setIsLiked] = useState<boolean>(false)
+	const [isLiked, setIsLiked] = useState<boolean>(false);
 
 	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
 	useEffect(() => {
-		const productData = getProductData(Number(params.productId));
-		const relatedProductData = getRelatedProductData(Number(params.productId));
-
-		setProduct(productData);
-		setDisplayImage(productData.imageUrl);
-		setRelatedProducts(relatedProductData);
-		window.scrollTo(0, 0);
+		initProductDetails();
 	}, [params.productId]);
+
+	const initProductDetails = async () => {
+		const { shoeData, imageData } = await getShoe(params.productId!);
+
+		setProduct(shoeData);
+		setImages(
+			imageData[0].fields.images
+				.split("|")
+				.filter((image: string) => image !== "")
+		);
+		setDisplayImage(shoeData.imageUrl);
+		window.scrollTo(0, 0);
+	};
 
 	return (
 		<div className='container mx-auto py-20'>
 			<div className='flex justify-center gap-20 pb-32'>
 				<div className='flex gap-3'>
 					<div className='flex flex-col gap-3'>
-						{product.images.map((image, index) => {
+						{images.map((image, index) => {
 							return (
 								<img
 									className='w-12 h-12 brightness-50 hover:brightness-100 cursor-pointer'
@@ -203,11 +218,11 @@ const ProductDetails = () => {
 			<div className=' flex flex-col gap-5 items-center'>
 				<h2 className='font-bold text-xl'>Related Products</h2>
 
-				<div className='flex flex-wrap justify-center gap-20 py-20'>
-					{relatedProducts.map((shoe, index) => {
+				{/* <div className='flex flex-wrap justify-center gap-20 py-20'>
+					{relatedProducts?.map((shoe, index) => {
 						return <Card shoe={shoe} key={index} />;
 					})}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

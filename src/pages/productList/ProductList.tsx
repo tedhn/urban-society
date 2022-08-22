@@ -1,24 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { catergoryType, shoeType } from "../../../custom";
+import { catergoryType, ShoeDataContextType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
 import { getCategoryData, getShoesInCategory } from "../../shoes.data";
+import { ShoeDataContext } from "../../useContext/shoeDataContext";
 
 const ProductList = () => {
 	const params = useParams();
 
-	const [shoes, setShoes] = useState<Array<shoeType>>([]);
+	const [shoes, setShoes] = useState<Array<any>>([]);
 	const [category, setCategory] = useState<catergoryType>({});
+
+	const { getCategory } = useContext(ShoeDataContext) as ShoeDataContextType;
 
 	// loading the data on 1st render and whenever category changes
 	useEffect(() => {
-		const shoeData = getShoesInCategory(params.category!);
-		const categoryData = getCategoryData(params.category!);
-
-		setCategory(categoryData);
-		setShoes(shoeData);
-		window.scrollTo(0, 0);
+		initProductListPage();
 	}, [params.category]);
+
+	const initProductListPage = async () => {
+		const categoryData = getCategoryData(params.category!);
+		const shoeData = await getCategory(categoryData.id! - 1);
+
+		console.log(shoeData);
+		setShoes(shoeData);
+		setCategory(categoryData);
+		window.scrollTo(0, 0);
+	};
 
 	return (
 		<div>
@@ -41,8 +49,8 @@ const ProductList = () => {
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>
-					{shoes.map((shoe, index) => {
-						return <Card shoe={shoe} key={index} />;
+					{shoes.map(({ fields , id}) => {
+						return <Card shoe={fields} key={id} id={id}/>;
 					})}
 				</div>
 			</section>

@@ -7,9 +7,10 @@ interface propTypes {
 	shoe: shoeType;
 	tagColor?: string;
 	tagText?: string;
+	id : string
 }
 
-const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText }) => {
+const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText , id}) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
 	const [isLiked, setIsLiked] = useState<boolean>(false);
 
@@ -17,7 +18,7 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText }) => {
 
 	const navigate = useNavigate();
 
-	const handleClick = () => navigate(`/products/${shoe.id}`);
+	const handleClick = () => navigate(`/products/${id}`);
 
 	return (
 		<div
