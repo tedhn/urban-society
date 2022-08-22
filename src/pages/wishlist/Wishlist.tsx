@@ -10,7 +10,7 @@ const Wishlist = () => {
 	const { addToCart } = useContext(CartContext) as cartContextType;
 
 	return (
-		<div className='container mx-auto px-4   text-center bg-darkgrey flex flex-col'>
+		<div className='container mx-auto px-4 pb-10 text-center bg-darkgrey flex flex-col'>
 			<h2 className='mt-10 font-bold text-5xl mb-10'>WishList</h2>
 
 			<div className='flex flex-col gap-5 px-10'>

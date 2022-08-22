@@ -51,9 +51,8 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			`https://api.airtable.com/v0/appyXjs9GFlICHIp0/Shoes/${id}`,
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
-		const imageData = await getImages(data.fields.id);
 
-		return { shoeData: data.fields, imageData };
+		return  data.fields ;
 	};
 
 	const getImages = async (id: number) => {
@@ -65,8 +64,23 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 		return data.records.filter((data: any) => data.fields.id == id);
 	};
 
+  const searchShoe = async (query : string) => {
+    		const { data } = await axios.get(
+					"https://api.airtable.com/v0/appyXjs9GFlICHIp0/Shoes?&view=Grid%20view",
+					{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
+				);
+
+
+        return data.records.filter((shoe : any)=>{
+          console.log(shoe)
+
+          return shoe.fields.name.toLowerCase().includes(query);
+        })
+  }
+
 	return (
-		<ShoeDataContext.Provider value={{ getCategory, getShoe }}>
+		<ShoeDataContext.Provider
+			value={{ getCategory, getShoe, getImages, searchShoe }}>
 			{children}
 		</ShoeDataContext.Provider>
 	);

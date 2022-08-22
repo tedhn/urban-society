@@ -22,7 +22,6 @@ const ProductList = () => {
 		const categoryData = getCategoryData(params.category!);
 		const shoeData = await getCategory(categoryData.id! - 1);
 
-		console.log(shoeData);
 		setShoes(shoeData);
 		setCategory(categoryData);
 		window.scrollTo(0, 0);
@@ -49,8 +48,8 @@ const ProductList = () => {
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>
-					{shoes.map(({ fields , id}) => {
-						return <Card shoe={fields} key={id} id={id}/>;
+					{shoes.map(({ fields, id }) => {
+						return <Card shoe={fields} key={id} id={id} />;
 					})}
 				</div>
 			</section>

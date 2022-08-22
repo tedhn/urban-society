@@ -69,8 +69,10 @@ interface shoeDataType {
 }
 
 interface ShoeDataContextType {
-	getCategory : (category  : number) => Array
-	getShoe : (id  : string) => any
+	getCategory: (category: number, total?: number) => Array;
+	getShoe: (id: string) => any;
+	getImages: (id: number) => any;
+	searchShoe: (query: string) => any;
 }
 
 export {

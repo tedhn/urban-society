@@ -1,28 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { shoeType } from "../../../custom";
+import React, { useContext, useEffect, useState } from "react";
+import { ShoeDataContextType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
 import { searchForShoe } from "../../shoes.data";
+import { ShoeDataContext } from "../../useContext/shoeDataContext";
 
 interface propTypes {
 	results?: shoeType[];
 }
 
 const Search: React.FC<propTypes> = ({ results }) => {
-	const [searchResults, setSearchResults] = useState<Array<shoeType>>([]);
+	const { searchShoe } = useContext(ShoeDataContext) as ShoeDataContextType;
+
+	const [searchResults, setSearchResults] = useState<any>([]);
 	const [searchQuery, setSearchQuery] = useState<string>("");
 
 	useEffect(() => {
 		if (searchQuery !== "") {
-			const searchResults = searchForShoe(searchQuery);
-
-			setSearchResults(searchResults);
+			handleSearch();
 		}
 	}, [searchQuery]);
+
+	const handleSearch = async () => {
+		const searchResults = await searchShoe(searchQuery);
+
+		console.log(searchResults);
+
+		setSearchResults(searchResults);
+	};
 
 	return (
 		<div className='container mx-auto px-4 text-center bg-darkgrey flex flex-col'>
 			<div className='mt-10 font-bold text-5xl mb-10'>
-				{searchQuery === "" ? "Search Results" : `Search Results : ${searchQuery}`}
+				{searchQuery === ""
+					? "Search Results"
+					: `Search Results : ${searchQuery}`}
 			</div>
 
 			<input
@@ -33,8 +44,9 @@ const Search: React.FC<propTypes> = ({ results }) => {
 				onChange={(e) => setSearchQuery(e.target.value)}
 			/>
 			<div className='flex flex-wrap justify-center gap-10 px-20 my-20 text-center'>
-				{searchResults.map((shoe, index) => {
-					return <Card shoe={shoe} key={index} />;
+				{searchResults.map(({ fields, id }: any) => {
+					console.log(fields);
+					return <Card shoe={fields} key={id} id={id} />;
 				})}
 			</div>
 		</div>

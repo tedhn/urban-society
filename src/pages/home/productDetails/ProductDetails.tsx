@@ -18,7 +18,9 @@ const ProductDetails = () => {
 
 	const { addToCart } = useContext(CartContext) as cartContextType;
 	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
-	const { getShoe } = useContext(ShoeDataContext) as ShoeDataContextType;
+	const { getShoe, getImages } = useContext(
+		ShoeDataContext
+	) as ShoeDataContextType;
 
 	const [product, setProduct] = useState<shoeType>({
 		name: "",
@@ -46,14 +48,17 @@ const ProductDetails = () => {
 	}, [params.productId]);
 
 	const initProductDetails = async () => {
-		const { shoeData, imageData } = await getShoe(params.productId!);
+		const shoeData = await getShoe(params.productId!);
+		const imageData = await getImages(shoeData.id);
 
+		
 		setProduct(shoeData);
 		setImages(
 			imageData[0].fields.images
 				.split("|")
 				.filter((image: string) => image !== "")
 		);
+
 		setDisplayImage(shoeData.imageUrl);
 		window.scrollTo(0, 0);
 	};
