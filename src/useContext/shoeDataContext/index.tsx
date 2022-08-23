@@ -36,7 +36,9 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 
-		console.log(data.records.filter((record: RecordType) => record.fields.id == id))
+		console.log(
+			data.records.filter((record: RecordType) => record.fields.id == id)
+		);
 		return data.records.filter((record: RecordType) => record.fields.id == id);
 	};
 
@@ -72,7 +74,7 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 		return randomShoes.flat();
 	};
 
-	const getCategoryDetails = async (category: string) => {
+	const getCategoryDetails = async (category: string = "") => {
 		let id = 0;
 
 		if (category === "women") {
@@ -87,6 +89,10 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			"https://api.airtable.com/v0/appyXjs9GFlICHIp0/Categories?maxRecords=3&view=Grid%20view",
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
+
+		if (id === 0) {
+			return data.records;
+		}
 
 		return data.records.filter(
 			(record: RecordType) => record.fields.id === id

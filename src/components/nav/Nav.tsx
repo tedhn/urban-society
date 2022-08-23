@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { cartContextType } from "../../../custom";
+import { CartContext } from "../../useContext";
 
 const Nav = () => {
 	const navigate = useNavigate();
 
 	const [isTransparent, setIsTransparent] = useState<boolean>(true);
+
+	const { cartItems } = useContext(CartContext) as cartContextType;
 
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 150) {
@@ -52,7 +56,9 @@ const Nav = () => {
 				</ul>
 
 				<ul className='flex font-bold items-center'>
-					<li className='hoverBackgroundEffect relative p-2  flex items-center gap-3 rounded-md cursor-pointer' onClick={() => navigate("/search")}>
+					<li
+						className='hoverBackgroundEffect relative p-2  flex items-center gap-3 rounded-md cursor-pointer'
+						onClick={() => navigate("/search")}>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							className='h-5 w-5'
@@ -90,6 +96,9 @@ const Nav = () => {
 							fill='currentColor'>
 							<path d='M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z' />
 						</svg>
+						{cartItems.length !== 0 ? (
+							<div className='inline-flex absolute top-1 right-1 justify-center items-center w-2 h-2 text-sm font-bold text-white bg-danger rounded-full '></div>
+						) : null}
 					</li>
 					<li className='hoverBackgroundEffect relative p-2 rounded-md cursor-pointer'>
 						<svg

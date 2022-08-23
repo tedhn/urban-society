@@ -76,7 +76,7 @@ interface ShoeDataContextType {
 	getImages: (id: number) => Promise<any> | Array<RecordType>;
 	searchShoe: (query: string) => Promise<any> | Array<RecordType>;
 	getRandomShoes: (total: number) => Promise<any> | Array<RecordType>;
-	getCategoryDetails: (category: string) => Promise<any> | Array<RecordType>;
+	getCategoryDetails: (category?: string) => Promise<any> | Array<RecordType>;
 }
 
 export {

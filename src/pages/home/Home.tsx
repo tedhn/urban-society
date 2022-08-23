@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { RecordType, ShoeDataContextType } from "../../../custom";
-import Card from "../../components/product-card";
+import Card from "../../components/product-card/ProductCard";
 import { ShoeDataContext } from "../../useContext";
 
 const Home = () => {
+
+	const navigate = useNavigate()
+
 	const [newArrival, setNewArrival] = useState<Array<RecordType>>([]);
 	const [highLights, setHighlights] = useState<Array<RecordType>>([]);
 
@@ -35,7 +39,7 @@ const Home = () => {
 				<div className='relative z-10 top-1/2 text-center'>
 					<h1 className='text-6xl font-bold'>Join the Society</h1>
 					<h2 className='my-6'>Find a style that’s uniquely you</h2>
-					<button className=' py-2 px-4 font-medium text-darkgrey bg-gold'>
+					<button className=' py-2 px-4 font-medium text-darkgrey bg-gold' onClick={()=> navigate('/category')}>
 						Explore More
 					</button>
 				</div>

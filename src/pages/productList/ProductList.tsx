@@ -57,7 +57,7 @@ const ProductList = () => {
 					<div>sorting here</div>
 				</div>
 
-				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>
+				<div className='flex flex-wrap justify-center gap-10 px-20 my-20 text-center'>
 					{shoes.map((record) => {
 						return <Card shoe={record.fields} key={record.id} id={record.id} />;
 					})}
