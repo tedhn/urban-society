@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { shoeType } from "../../../custom";
+import React, { useContext, useEffect, useState } from "react";
+import { ShoeDataContextType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
-import { getHighlights, getNewArrivals } from "../../shoes.data";
+import { ShoeDataContext } from "../../useContext/shoeDataContext";
 
 const Home = () => {
-	const [newArrival, setNewArrival] = useState<Array<shoeType>>([]);
+	const [newArrival, setNewArrival] = useState<Array<any>>([]);
+	const [highLights, setHighlights] = useState<Array<any>>([]);
 
-	const [highLights, setHighlights] = useState<Array<shoeType>>([]);
+	const { getRandomShoes } = useContext(ShoeDataContext) as ShoeDataContextType;
 
 	useEffect(() => {
-		const newArrivalData = getNewArrivals();
-		const highlightsData = getHighlights();
+		initHomePageShoeData();
+	}, []);
 
-		setNewArrival(newArrivalData);
-		setHighlights(highlightsData);
-	});
+	const initHomePageShoeData = async () => {
+		const shoeData = await getRandomShoes(10);
+
+		console.log(shoeData);
+
+		setNewArrival(shoeData.slice(0, 5));
+		setHighlights(shoeData.slice(5, 10));
+	};
 
 	return (
 		<div>
@@ -42,17 +48,14 @@ const Home = () => {
 					<div className='flex flex-wrap justify-center gap-16 my-20'>
 						{newArrival.map((shoe, index) => (
 							<Card
-								shoe={shoe}
-								key={index}
+								shoe={shoe.fields}
+								key={shoe.fields.id}
+								id={shoe.fields.id}
 								tagColor='#FFD369'
 								tagText='New Arrival'
 							/>
 						))}
 					</div>
-
-					{/* <button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
-						See More
-					</button> */}
 				</div>
 			</section>
 			<section className='container relative mx-auto my-20'>
@@ -65,17 +68,14 @@ const Home = () => {
 					<div className='flex flex-wrap justify-center gap-16 my-20'>
 						{highLights.map((shoe, index) => (
 							<Card
-								shoe={shoe}
-								key={index}
+								shoe={shoe.fields}
+								key={shoe.fields.id}
+								id={shoe.fields.id}
 								tagColor='#f87171'
 								tagText='50% Discount'
 							/>
 						))}
 					</div>
-
-					{/* <button className='mx-auto py-2 px-4 font-medium text-darkgrey bg-gold rounded-sm'>
-						See More
-					</button> */}
 				</div>
 			</section>
 		</div>

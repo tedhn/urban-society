@@ -20,7 +20,7 @@ const Nav = () => {
 
 	return (
 		<div
-			className='sticky top-0 z-10 transition-colors'
+			className='sticky top-0 z-20 transition-colors'
 			style={
 				isTransparent
 					? { backgroundColor: "transparent" }

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShoeDataContextType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
-import { searchForShoe } from "../../shoes.data";
 import { ShoeDataContext } from "../../useContext/shoeDataContext";
 
 interface propTypes {
@@ -22,8 +21,6 @@ const Search: React.FC<propTypes> = ({ results }) => {
 
 	const handleSearch = async () => {
 		const searchResults = await searchShoe(searchQuery);
-
-		console.log(searchResults);
 
 		setSearchResults(searchResults);
 	};

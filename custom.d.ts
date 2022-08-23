@@ -73,6 +73,8 @@ interface ShoeDataContextType {
 	getShoe: (id: string) => any;
 	getImages: (id: number) => any;
 	searchShoe: (query: string) => any;
+	getRandomShoes: (total: number) => any;
+	getCategoryDetails: (category: string) => any;
 }
 
 export {

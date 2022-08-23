@@ -2,16 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { catergoryType, ShoeDataContextType, shoeType } from "../../../custom";
 import Card from "../../components/card/Card";
-import { getCategoryData, getShoesInCategory } from "../../shoes.data";
 import { ShoeDataContext } from "../../useContext/shoeDataContext";
 
 const ProductList = () => {
 	const params = useParams();
 
 	const [shoes, setShoes] = useState<Array<any>>([]);
-	const [category, setCategory] = useState<catergoryType>({});
+	const [category, setCategory] = useState<any>({});
 
-	const { getCategory } = useContext(ShoeDataContext) as ShoeDataContextType;
+	const { getCategory, getCategoryDetails } = useContext(
+		ShoeDataContext
+	) as ShoeDataContextType;
 
 	// loading the data on 1st render and whenever category changes
 	useEffect(() => {
@@ -19,8 +20,8 @@ const ProductList = () => {
 	}, [params.category]);
 
 	const initProductListPage = async () => {
-		const categoryData = getCategoryData(params.category!);
-		const shoeData = await getCategory(categoryData.id! - 1);
+		const categoryData = await getCategoryDetails(params.category!);
+		const shoeData = await getCategory(categoryData.id - 1);
 
 		setShoes(shoeData);
 		setCategory(categoryData);
@@ -31,13 +32,13 @@ const ProductList = () => {
 		<div>
 			<section>
 				<img
-					src={category.imageUrl}
+					src={category.Image}
 					className='absolute h-60 w-full top-0 object-cover object-center brightness-50'
 					alt='404'
 				/>
 
 				<p className='container relative mx-auto mt-14 p-5 text-6xl font-bold z-10'>
-					{category.name}
+					{category.Title}
 				</p>
 			</section>
 
