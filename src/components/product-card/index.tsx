@@ -57,7 +57,7 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText , id}) => {
 					addToWishlist({
 						name: shoe.name,
 						price: shoe.price,
-						shoeSize: 0,
+						shoeSize: 40,
 						image: shoe.imageUrl,
 					});
 					setIsLiked(!isLiked);

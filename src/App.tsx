@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Cart from "./pages/cart/Cart";
-import Footer from "./components/footer/Footer";
-import Nav from "./components/nav/Nav";
-import Home from "./pages/home/Home";
-import ProductDetails from "./pages/home/productDetails/ProductDetails";
-import ProductList from "./pages/productList/ProductList";
-import Wishlist from "./pages/wishlist/Wishlist";
-import CartContextProvider from "./useContext/cartContext";
-import WishlistContextProvider from "./useContext/wishlistContext";
-import Search from "./pages/search/Search";
-import ShoeDataContextProvider from "./useContext/shoeDataContext";
+
+import Footer from "./components/footer";
+import Nav from "./components/nav";
+
+import { Cart, Home , ProductDetails, ProductList, Search, Wishlist  } from "./pages";
+import { CartContextProvider, ShoeDataContextProvider, WishlistContextProvider } from "./useContext";
+
+
 
 function App() {
 	return (

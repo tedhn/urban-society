@@ -1,14 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { catergoryType, ShoeDataContextType, shoeType } from "../../../custom";
-import Card from "../../components/card/Card";
-import { ShoeDataContext } from "../../useContext/shoeDataContext";
+import {
+	catergoryType,
+	RecordType,
+	ShoeDataContextType,
+} from "../../../custom";
+import { Card } from "../../components";
+import { ShoeDataContext } from "../../useContext";
 
 const ProductList = () => {
 	const params = useParams();
 
-	const [shoes, setShoes] = useState<Array<any>>([]);
-	const [category, setCategory] = useState<any>({});
+	const [shoes, setShoes] = useState<Array<RecordType>>([]);
+	const [category, setCategory] = useState<catergoryType>({
+		image: "",
+		title: "",
+		name: "",
+		id: 0,
+	});
 
 	const { getCategory, getCategoryDetails } = useContext(
 		ShoeDataContext
@@ -32,13 +41,13 @@ const ProductList = () => {
 		<div>
 			<section>
 				<img
-					src={category.Image}
+					src={category.image}
 					className='absolute h-60 w-full top-0 object-cover object-center brightness-50'
 					alt='404'
 				/>
 
 				<p className='container relative mx-auto mt-14 p-5 text-6xl font-bold z-10'>
-					{category.Title}
+					{category.title}
 				</p>
 			</section>
 
@@ -49,8 +58,8 @@ const ProductList = () => {
 				</div>
 
 				<div className='flex flex-wrap justify-between gap-10 px-20 my-20 text-center'>
-					{shoes.map(({ fields, id }) => {
-						return <Card shoe={fields} key={id} id={id} />;
+					{shoes.map((record) => {
+						return <Card shoe={record.fields} key={record.id} id={record.id} />;
 					})}
 				</div>
 			</section>

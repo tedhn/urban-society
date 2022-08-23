@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ShoeDataContextType, shoeType } from "../../../custom";
-import Card from "../../components/card/Card";
-import { ShoeDataContext } from "../../useContext/shoeDataContext";
+import { RecordType, ShoeDataContextType } from "../../../custom";
+import Card from "../../components/product-card";
+import { ShoeDataContext } from "../../useContext";
 
 const Home = () => {
-	const [newArrival, setNewArrival] = useState<Array<any>>([]);
-	const [highLights, setHighlights] = useState<Array<any>>([]);
+	const [newArrival, setNewArrival] = useState<Array<RecordType>>([]);
+	const [highLights, setHighlights] = useState<Array<RecordType>>([]);
 
 	const { getRandomShoes } = useContext(ShoeDataContext) as ShoeDataContextType;
 

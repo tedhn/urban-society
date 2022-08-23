@@ -1,7 +1,6 @@
 import React from "react";
-import { ShoeDataContextType } from "../../custom";
+import { RecordType, ShoeDataContextType } from "../../../custom";
 
-import Airtable from "airtable";
 import axios from "axios";
 
 interface propTypes {
@@ -13,8 +12,6 @@ export const ShoeDataContext = React.createContext<ShoeDataContextType | null>(
 );
 
 const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
-
-
 	const getCategory = async (id: number) => {
 		const { data } = await axios.get(
 			"https://api.airtable.com/v0/appyXjs9GFlICHIp0/Shoes?&view=Grid%20view",
@@ -39,7 +36,8 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 
-		return data.records.filter((data: any) => data.fields.id == id);
+		console.log(data.records.filter((record: RecordType) => record.fields.id == id))
+		return data.records.filter((record: RecordType) => record.fields.id == id);
 	};
 
 	const searchShoe = async (query: string) => {
@@ -48,10 +46,8 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 
-		return data.records.filter((shoe: any) => {
-			console.log(shoe);
-
-			return shoe.fields.name.toLowerCase().includes(query);
+		return data.records.filter((record: RecordType) => {
+			return record.fields.name.toLowerCase().includes(query);
 		});
 	};
 
@@ -71,7 +67,7 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 		const randomShoes = randomIdArr.map((id) =>
-			data.records.filter((shoe: any) => shoe.fields.id === id)
+			data.records.filter((record: RecordType) => record.fields.id === id)
 		);
 		return randomShoes.flat();
 	};
@@ -92,13 +88,9 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 
-		console.log(data);
-		console.log(
-			data.records.filter((category: any) => category.fields.id === id)
-		);
-
-		return data.records.filter((category: any) => category.fields.id === id)[0]
-			.fields;
+		return data.records.filter(
+			(record: RecordType) => record.fields.id === id
+		)[0].fields;
 	};
 
 	return (

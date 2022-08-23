@@ -1,10 +1,8 @@
-declare module "*.svg" {
-	import React = require("react");
-	export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
-	const src: string;
-	export default src;
+interface RecordType {
+	createdTime: string;
+	id: string;
+	fields: shoeType | catergoryType | imageType | any;
 }
-
 interface shoeType {
 	id: number;
 	name: string;
@@ -13,17 +11,18 @@ interface shoeType {
 	colour: string;
 	imageUrl: string;
 	videoUrl: string;
-	images: string[];
 	price: number;
-	tags: string[];
 }
-
 interface catergoryType {
-	id?: number;
-	name?: string;
-	imageUrl?: string;
+	id: number;
+	name: string;
+	image: string;
+	title: string;
 }
-
+interface imageType {
+	id: number;
+	images: string;
+}
 interface cartItemsTypes {
 	name: string;
 	image: string;
@@ -45,7 +44,7 @@ interface cartContextType {
 	removeFromCart: (name: string, shoeSize) => void;
 }
 
-interface wishtlistItemTypes {
+interface wishlistItemTypes {
 	name: string;
 	image: string;
 	price: number;
@@ -54,7 +53,7 @@ interface wishtlistItemTypes {
 
 interface wishlistContextType {
 	wishlistItems: Array<wishlistItemTypes>;
-	addToWishlist: ({ name, price, shoeSize, image }: wishlistItemsTypes) => void;
+	addToWishlist: ({ name, price, shoeSize, image }: wishlistItemTypes) => void;
 	removeFromWishlist: (name: string) => void;
 }
 
@@ -69,12 +68,15 @@ interface shoeDataType {
 }
 
 interface ShoeDataContextType {
-	getCategory: (category: number, total?: number) => Array;
-	getShoe: (id: string) => any;
-	getImages: (id: number) => any;
-	searchShoe: (query: string) => any;
-	getRandomShoes: (total: number) => any;
-	getCategoryDetails: (category: string) => any;
+	getCategory: (
+		category: number,
+		total?: number
+	) => Promise<any> | Array<RecordType>;
+	getShoe: (id: string) => Promise<any> | RecordType;
+	getImages: (id: number) => Promise<any> | Array<RecordType>;
+	searchShoe: (query: string) => Promise<any> | Array<RecordType>;
+	getRandomShoes: (total: number) => Promise<any> | Array<RecordType>;
+	getCategoryDetails: (category: string) => Promise<any> | Array<RecordType>;
 }
 
 export {
@@ -82,8 +84,10 @@ export {
 	catergoryType,
 	cartContextType,
 	cartItemsTypes,
-	wishtlistItemTypes,
+	wishlistItemTypes,
 	wishlistContextType,
 	shoeDataType,
 	ShoeDataContextType,
+	RecordType,
+	imageType,
 };

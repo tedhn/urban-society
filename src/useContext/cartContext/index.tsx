@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { cartContextType, cartItemsTypes } from "../../custom";
+import { cartContextType, cartItemsTypes } from "../../../custom";
 
 interface propTypes {
 	children: React.ReactNode;
@@ -15,8 +15,6 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 
 		const updatedItem = newCartItems.filter((item) => name === item.name)[0];
 
-    console.log(newCartItems)
-
 		if (quantity < 1) {
 			// removeFromCart(name);
 		} else {
@@ -29,7 +27,7 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 		name,
 		price,
 		quantity = 1,
-		shoeSize,
+		shoeSize = 40,
 		image
 	}: cartItemsTypes) => {
 		setCartItems((items) => [

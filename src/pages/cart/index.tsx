@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { cartContextType } from "../../../custom";
-import { CartContext } from "../../useContext/cartContext";
+import { CartContext } from "../../useContext";
 
 const Cart: React.FC = () => {
 	const { cartItems, updateCart, removeFromCart } = useContext(

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShoeDataContextType, shoeType } from "../../../custom";
-import Card from "../../components/card/Card";
-import { ShoeDataContext } from "../../useContext/shoeDataContext";
+import {Card} from "../../components";
+import { ShoeDataContext } from "../../useContext";
 
 interface propTypes {
 	results?: shoeType[];

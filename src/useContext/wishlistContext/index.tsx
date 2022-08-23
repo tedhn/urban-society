@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { wishlistContextType, wishtlistItemTypes } from "../../custom";
+import { wishlistContextType, wishlistItemTypes } from "../../../custom";
 
 interface propTypes {
 	children: React.ReactNode;
@@ -10,22 +10,19 @@ export const WishlistContext = React.createContext<wishlistContextType | null>(
 );
 
 const WishlistContextProvider: React.FC<propTypes> = ({ children }) => {
-	const [wishlistItems, setWishlistItems] = useState<Array<wishtlistItemTypes>>(
+	const [wishlistItems, setWishlistItems] = useState<Array<wishlistItemTypes>>(
 		[]
 	);
 
 	const addToWishlist = ({
 		name,
 		price,
-		shoeSize,
+		shoeSize =40,
 		image,
-	}: wishtlistItemTypes) => {
-    console.log(wishlistItems)
+	}: wishlistItemTypes) => {
+		console.log(wishlistItems);
 
-		setWishlistItems((items) => [
-			...items,
-			{ name, price, shoeSize, image },
-		]);
+		setWishlistItems((items) => [...items, { name, price, shoeSize, image }]);
 	};
 
 	const removeFromWishlist = (name: string) => {

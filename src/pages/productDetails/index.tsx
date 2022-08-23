@@ -2,23 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
 	cartContextType,
+	RecordType,
 	ShoeDataContextType,
 	shoeType,
 	wishlistContextType,
-} from "../../../../custom";
+} from "../../../custom";
 
-import Card from "../../../components/card/Card";
-import { getRelatedProductData } from "../../../shoes.data";
-import { CartContext } from "../../../useContext/cartContext";
-import { ShoeDataContext } from "../../../useContext/shoeDataContext";
-import { WishlistContext } from "../../../useContext/wishlistContext";
+import {Card} from "../../components";
+import { CartContext, ShoeDataContext, WishlistContext } from "../../useContext";
 
 const ProductDetails = () => {
 	const params = useParams();
 
 	const { addToCart } = useContext(CartContext) as cartContextType;
 	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
-	const { getShoe, getImages } = useContext(
+	const { getShoe, getImages, getRandomShoes } = useContext(
 		ShoeDataContext
 	) as ShoeDataContextType;
 
@@ -26,16 +24,14 @@ const ProductDetails = () => {
 		name: "",
 		description: "",
 		price: 0,
-		images: [],
 		imageUrl: "",
 		id: 1,
 		colour: "",
 		type: "",
 		videoUrl: "",
-		tags: [],
 	});
-	const [images, setImages] = useState([]);
-	const [relatedProducts, setRelatedProducts] = useState<Array<shoeType>>([]);
+	const [images, setImages] = useState<Array<string>>([]);
+	const [relatedProducts, setRelatedProducts] = useState<Array<RecordType>>([]);
 	const [displayImage, setDisplayImage] = useState<string>("");
 	const [quantity, setQuantity] = useState<number>(1);
 	const [selectedShoeSize, setShoeSize] = useState<number>(38);
@@ -50,8 +46,10 @@ const ProductDetails = () => {
 	const initProductDetails = async () => {
 		const shoeData = await getShoe(params.productId!);
 		const imageData = await getImages(shoeData.id);
+		const relatedProductData = await getRandomShoes(5);
 
-		
+		console.log(imageData)
+
 		setProduct(shoeData);
 		setImages(
 			imageData[0].fields.images
@@ -59,7 +57,10 @@ const ProductDetails = () => {
 				.filter((image: string) => image !== "")
 		);
 
+		console.log(relatedProductData);
+
 		setDisplayImage(shoeData.imageUrl);
+		setRelatedProducts(relatedProductData);
 		window.scrollTo(0, 0);
 	};
 
@@ -223,11 +224,11 @@ const ProductDetails = () => {
 			<div className=' flex flex-col gap-5 items-center'>
 				<h2 className='font-bold text-xl'>Related Products</h2>
 
-				{/* <div className='flex flex-wrap justify-center gap-20 py-20'>
-					{relatedProducts?.map((shoe, index) => {
-						return <Card shoe={shoe} key={index} />;
+				<div className='flex flex-wrap justify-center gap-20 py-20'>
+					{relatedProducts.map((record) => {
+						return <Card shoe={record.fields} key={record.id} id={record.id} />;
 					})}
-				</div> */}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { cartContextType, wishlistContextType } from "../../../custom";
-import { CartContext } from "../../useContext/cartContext";
-import { WishlistContext } from "../../useContext/wishlistContext";
+import { WishlistContext, CartContext } from "../../useContext";
 
 const Wishlist = () => {
 	const { wishlistItems, removeFromWishlist } = useContext(
@@ -38,7 +37,7 @@ const Wishlist = () => {
 										</button>
 										<button
 											className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
-											onClick={() => addToCart(item)}>
+											onClick={() => addToCart({ ...item, quantity: 1 })}>
 											Add to Cart
 										</button>
 									</div>
