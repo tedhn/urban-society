@@ -5,11 +5,13 @@ import {
 	RecordType,
 	ShoeDataContextType,
 } from "../../../custom";
-import { Card } from "../../components";
+import { Card, DropDown } from "../../components";
 import { ShoeDataContext } from "../../useContext";
 
 const ProductList = () => {
 	const params = useParams();
+
+	const options = ["None", "Price", "Alphabetically", "Latest"];
 
 	const [shoes, setShoes] = useState<Array<RecordType>>([]);
 	const [category, setCategory] = useState<catergoryType>({
@@ -18,6 +20,7 @@ const ProductList = () => {
 		name: "",
 		id: 0,
 	});
+	const [sorting, setSorting] = useState<number>(-1);
 
 	const { getCategory, getCategoryDetails } = useContext(
 		ShoeDataContext
@@ -28,10 +31,46 @@ const ProductList = () => {
 		initProductListPage();
 	}, [params.category]);
 
+	useEffect(() => {
+		switch (sorting) {
+			case 1: {
+				console.log(1);
+				const newShoeArr = shoes;
+
+				newShoeArr.sort((a, b) => a.fields.price - b.fields.price);
+
+				console.log(newShoeArr);
+				break;
+			}
+			case 2: {
+				console.log(2);
+
+				const newShoeArr = shoes;
+
+				newShoeArr.sort((a, b) => a.fields.name.localeCompare(b.fields.name));
+
+				break;
+			}
+			case 3: {
+				const newShoeArr = shoes;
+
+				newShoeArr.sort((a, b) => a.createdTime.localeCompare(b.createdTime));
+				break;
+			}
+			default: {
+				const newShoeArr = shoes;
+
+				newShoeArr.sort((a, b) => a.fields.id - b.fields.id);
+				break;
+			}
+		}
+	}, [sorting]);
+
 	const initProductListPage = async () => {
 		const categoryData = await getCategoryDetails(params.category!);
 		const shoeData = await getCategory(categoryData.id - 1);
 
+		console.log(shoeData);
 		setShoes(shoeData);
 		setCategory(categoryData);
 		window.scrollTo(0, 0);
@@ -53,8 +92,11 @@ const ProductList = () => {
 
 			<section className='container mx-auto'>
 				<div className=' my-10 p-5 px-20 flex justify-end items-center gap-4'>
-					<div>filter here</div>
-					<div>sorting here</div>
+					<DropDown
+						label={sorting === 0 ? "Sort" : options[sorting]}
+						options={options}
+						setSorting={setSorting}
+					/>
 				</div>
 
 				<div className='flex flex-wrap justify-center gap-10 px-20 my-20 text-center'>

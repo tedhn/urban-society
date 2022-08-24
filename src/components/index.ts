@@ -1,5 +1,6 @@
 import Nav from "./nav";
 import Footer from "./footer";
-import Card from "./product-card";
+import Card from "./productCard";
+import DropDown from "./dropDown";
 
-export { Nav, Footer, Card };
+export { Nav, Footer, Card, DropDown };

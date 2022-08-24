@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecordType, ShoeDataContextType } from "../../../custom";
-import Card from "../../components/product-card/ProductCard";
+import Card from "../../components/productCard/ProductCard";
 import { ShoeDataContext } from "../../useContext";
 
 const Home = () => {
