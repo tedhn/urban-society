@@ -23,7 +23,17 @@ import {
 function App() {
 	return (
 		<div className='flex flex-col min-h-screen'>
-			<ToastContainer />
+			<ToastContainer
+				position='top-right'
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover={false}
+			/>
 			<ShoeDataContextProvider>
 				<CartContextProvider>
 					<WishlistContextProvider>

@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecordType, ShoeDataContextType } from "../../../custom";
-import Card from "../../components/productCard/ProductCard";
+import { Card, ProductCardLoader } from "../../components";
 import { ShoeDataContext } from "../../useContext";
 
 const Home = () => {
-
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const [newArrival, setNewArrival] = useState<Array<RecordType>>([]);
 	const [highLights, setHighlights] = useState<Array<RecordType>>([]);
@@ -19,8 +18,6 @@ const Home = () => {
 
 	const initHomePageShoeData = async () => {
 		const shoeData = await getRandomShoes(10);
-
-		console.log(shoeData);
 
 		setNewArrival(shoeData.slice(0, 5));
 		setHighlights(shoeData.slice(5, 10));
@@ -39,7 +36,9 @@ const Home = () => {
 				<div className='relative z-10 top-1/2 text-center'>
 					<h1 className='text-6xl font-bold'>Join the Society</h1>
 					<h2 className='my-6'>Find a style that’s uniquely you</h2>
-					<button className=' py-2 px-4 font-medium text-darkgrey bg-gold' onClick={()=> navigate('/category')}>
+					<button
+						className=' py-2 px-4 font-medium text-darkgrey bg-gold'
+						onClick={() => navigate("/category")}>
 						Explore More
 					</button>
 				</div>
@@ -49,17 +48,21 @@ const Home = () => {
 				<div className='text-center '>
 					<h2 className='text-2xl font-bold'>New Arrivals</h2>
 
-					<div className='flex flex-wrap justify-center gap-16 my-20'>
-						{newArrival.map((shoe, index) => (
-							<Card
-								shoe={shoe.fields}
-								key={shoe.fields.id}
-								id={shoe.fields.id}
-								tagColor='#FFD369'
-								tagText='New Arrival'
-							/>
-						))}
-					</div>
+					{newArrival.length !== 0 ? (
+						<div className='flex flex-wrap justify-center gap-16 my-20'>
+							{newArrival.map((shoe) => (
+								<Card
+									shoe={shoe.fields}
+									key={shoe.fields.id}
+									id={shoe.id}
+									tagColor='#FFD369'
+									tagText='New Arrival'
+								/>
+							))}
+						</div>
+					) : (
+						<ProductCardLoader width='100%' />
+					)}
 				</div>
 			</section>
 			<section className='container relative mx-auto my-20'>
@@ -69,17 +72,21 @@ const Home = () => {
 						EXPLORE YOURSELF IN OUR NEW PRODUCTS' HIGHLIGHTS
 					</p>
 
-					<div className='flex flex-wrap justify-center gap-16 my-20'>
-						{highLights.map((shoe, index) => (
-							<Card
-								shoe={shoe.fields}
-								key={shoe.fields.id}
-								id={shoe.fields.id}
-								tagColor='#f87171'
-								tagText='50% Discount'
-							/>
-						))}
-					</div>
+					{highLights.length !== 0 ? (
+						<div className='flex flex-wrap justify-center gap-16 my-20'>
+							{highLights.map((shoe) => (
+								<Card
+									shoe={shoe.fields}
+									key={shoe.fields.id}
+									id={shoe.id}
+									tagColor='#f87171'
+									tagText='50% Discount'
+								/>
+							))}
+						</div>
+					) : (
+						<ProductCardLoader width='100%' />
+					)}
 				</div>
 			</section>
 		</div>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { shoeType, wishlistContextType } from "../../../custom";
 import { WishlistContext } from "../../useContext/wishlistContext";
-import {  toast } from "react-toastify";
+import { notify } from "../../util";
 
 interface propTypes {
 	shoe: shoeType;
@@ -17,7 +17,7 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText, id }) => {
 
 	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
 
-	const notify = () => toast.success(`Added to Wishlist`);
+
 
 	const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText, id }) => {
 						shoeSize: 40,
 						image: shoe.imageUrl,
 					});
-					notify();
+					notify("Wishlist", "❤️");
 					setIsLiked(!isLiked);
 				}}
 				strokeWidth='2'>
