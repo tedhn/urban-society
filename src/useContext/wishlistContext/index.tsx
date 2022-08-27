@@ -14,15 +14,8 @@ const WishlistContextProvider: React.FC<propTypes> = ({ children }) => {
 		[]
 	);
 
-	const addToWishlist = ({
-		name,
-		price,
-		shoeSize =40,
-		image,
-	}: wishlistItemTypes) => {
-		console.log(wishlistItems);
-
-		setWishlistItems((items) => [...items, { name, price, shoeSize, image }]);
+	const addToWishlist = ({ name, price, image }: wishlistItemTypes) => {
+		setWishlistItems((items) => [...items, { name, price, image }]);
 	};
 
 	const removeFromWishlist = (name: string) => {
@@ -35,9 +28,20 @@ const WishlistContextProvider: React.FC<propTypes> = ({ children }) => {
 		setWishlistItems(filteredWishlistItmes);
 	};
 
+	const isInWishlist = (name: string) => {
+		return wishlistItems.filter((item) => item.name === name).length !== 0
+			? true
+			: false;
+	};
+
 	return (
 		<WishlistContext.Provider
-			value={{ wishlistItems, addToWishlist, removeFromWishlist }}>
+			value={{
+				wishlistItems,
+				addToWishlist,
+				removeFromWishlist,
+				isInWishlist,
+			}}>
 			{children}
 		</WishlistContext.Provider>
 	);

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { shoeType, wishlistContextType } from "../../../custom";
 import { WishlistContext } from "../../useContext/wishlistContext";
@@ -15,11 +15,31 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText, id }) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
 	const [isLiked, setIsLiked] = useState<boolean>(false);
 
-	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
+	const { addToWishlist, removeFromWishlist, isInWishlist } = useContext(
+		WishlistContext
+	) as wishlistContextType;
 
-
+	useEffect(() => {
+		setIsLiked(isInWishlist(shoe.name));
+	}, []);
 
 	const navigate = useNavigate();
+
+	const toggleWishlist = () => {
+		if (!isLiked) {
+			addToWishlist({
+				name: shoe.name,
+				price: shoe.price,
+				image: shoe.imageUrl,
+			});
+			notify("Added to Wishlist", "❤️");
+		} else {
+			removeFromWishlist(shoe.name);
+			notify("Removed from Wishlist", "a");
+		}
+
+		setIsLiked(!isLiked);
+	};
 
 	const handleClick = () => navigate(`/products/${id}`);
 
@@ -60,7 +80,6 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText, id }) => {
 					addToWishlist({
 						name: shoe.name,
 						price: shoe.price,
-						shoeSize: 40,
 						image: shoe.imageUrl,
 					});
 					notify("Wishlist", "❤️");

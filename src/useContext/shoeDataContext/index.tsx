@@ -36,9 +36,6 @@ const ShoeDataContextProvider: React.FC<propTypes> = ({ children }) => {
 			{ headers: { Authorization: "Bearer key52VybAAm5VmPUq" } }
 		);
 
-		console.log(
-			data.records.filter((record: RecordType) => record.fields.id == id)
-		);
 		return data.records.filter((record: RecordType) => record.fields.id == id);
 	};
 

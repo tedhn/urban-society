@@ -42,19 +42,21 @@ interface cartContextType {
 		image,
 	}: cartItemsTypes) => void;
 	removeFromCart: (name: string, shoeSize) => void;
+
+	checkIsInCart: (name: string) => boolean;
 }
 
 interface wishlistItemTypes {
 	name: string;
 	image: string;
 	price: number;
-	shoeSize: number;
 }
 
 interface wishlistContextType {
 	wishlistItems: Array<wishlistItemTypes>;
-	addToWishlist: ({ name, price, shoeSize, image }: wishlistItemTypes) => void;
+	addToWishlist: ({ name, price, image }: wishlistItemTypes) => void;
 	removeFromWishlist: (name: string) => void;
+	isInWishlist: (name: string) => boolean;
 }
 
 interface shoeDataType {

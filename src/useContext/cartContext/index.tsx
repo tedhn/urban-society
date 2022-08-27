@@ -46,9 +46,21 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
     setCartItems(filteredCartItmes)
 	};
 
+	const checkIsInCart = (name :string)=>{
+				return cartItems.filter((item) => item.name === name).length !== 0
+					? true
+					: false;
+	}
+
 	return (
 		<CartContext.Provider
-			value={{ cartItems, updateCart, addToCart, removeFromCart }}>
+			value={{
+				cartItems,
+				updateCart,
+				addToCart,
+				removeFromCart,
+				checkIsInCart,
+			}}>
 			{children}
 		</CartContext.Provider>
 	);

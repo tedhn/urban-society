@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import {
 	cartContextType,
@@ -22,10 +22,15 @@ import {
 import { notify } from "../../util";
 
 const ProductDetails = () => {
+	const navigate = useNavigate();
 	const params = useParams();
 
-	const { addToCart } = useContext(CartContext) as cartContextType;
-	const { addToWishlist } = useContext(WishlistContext) as wishlistContextType;
+	const { addToCart, checkIsInCart } = useContext(
+		CartContext
+	) as cartContextType;
+	const { addToWishlist, isInWishlist, removeFromWishlist } = useContext(
+		WishlistContext
+	) as wishlistContextType;
 	const { getShoe, getImages, getRandomShoes } = useContext(
 		ShoeDataContext
 	) as ShoeDataContextType;
@@ -46,6 +51,7 @@ const ProductDetails = () => {
 	const [quantity, setQuantity] = useState<number>(1);
 	const [selectedShoeSize, setShoeSize] = useState<number>(38);
 	const [isLiked, setIsLiked] = useState<boolean>(false);
+	const [isInCart, setIsInCart] = useState<boolean>(false);
 
 	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
@@ -57,6 +63,10 @@ const ProductDetails = () => {
 		const shoeData = await getShoe(params.productId!);
 		const imageData = await getImages(shoeData.id);
 		const relatedProductData = await getRandomShoes(5);
+
+		setIsLiked(isInWishlist(shoeData.name));
+		// setIsInCart()
+		setIsInCart(checkIsInCart(shoeData.name));
 
 		setShoe(shoeData);
 		setImages(
@@ -71,7 +81,7 @@ const ProductDetails = () => {
 	};
 
 	const handleAddToCart = () => {
-		notify("Cart", "🛒");
+		notify("Added to Cart", "🛒");
 
 		addToCart({
 			name: shoe.name,
@@ -82,15 +92,20 @@ const ProductDetails = () => {
 		});
 	};
 
-	const handleAddToWishList = () => {
+	const toggleWishlist = () => {
+		if (!isLiked) {
+			addToWishlist({
+				name: shoe.name,
+				price: shoe.price,
+				image: shoe.imageUrl,
+			});
+			notify("Added to Wishlist", "❤️");
+		} else {
+			removeFromWishlist(shoe.name);
+			notify("Removed from Wishlist", "a");
+		}
+
 		setIsLiked(!isLiked);
-		addToWishlist({
-			name: shoe.name,
-			price: shoe.price,
-			shoeSize: selectedShoeSize,
-			image: shoe.imageUrl,
-		});
-		notify("Wishlist", "❤️");
 	};
 
 	return (
@@ -152,45 +167,54 @@ const ProductDetails = () => {
 							</ul>
 
 							<div className='flex gap-5 items-center my-4'>
-								<div className='flex gap-1 '>
-									<button>
-										<svg
-											xmlns='http://www.w3.org/2000/svg'
-											viewBox='0 0 20 20'
-											className='hoverBackgroundEffect rounded-md h-5 w-5'
-											onClick={() => setQuantity(quantity - 1)}
-											fill='currentColor'>
-											<path
-												fillRule='evenodd'
-												d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-												clipRule='evenodd'
-											/>
-										</svg>
+								{isInCart ? (
+									<button
+										className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
+										onClick={() => navigate("/cart")}>
+										View Cart
 									</button>
-									<div className='font-medium text-2xl mx-5 w-5 text-center'>
-										{quantity}
-									</div>
-									<button>
-										<svg
-											xmlns='http://www.w3.org/2000/svg'
-											viewBox='0 0 20 20'
-											className='hoverBackgroundEffect rounded-md h-5 w-5'
-											onClick={() => setQuantity(quantity + 1)}
-											fill='currentColor'>
-											<path
-												fillRule='evenodd'
-												d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
-												clipRule='evenodd'
-											/>
-										</svg>
-									</button>
-								</div>
-
-								<button
-									className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
-									onClick={handleAddToCart}>
-									Add to Cart
-								</button>
+								) : (
+									<>
+										<div className='flex gap-1 '>
+											<button>
+												<svg
+													xmlns='http://www.w3.org/2000/svg'
+													viewBox='0 0 20 20'
+													className='hoverBackgroundEffect rounded-md h-5 w-5'
+													onClick={() => setQuantity(quantity - 1)}
+													fill='currentColor'>
+													<path
+														fillRule='evenodd'
+														d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
+														clipRule='evenodd'
+													/>
+												</svg>
+											</button>
+											<div className='font-medium text-2xl mx-5 w-5 text-center'>
+												{quantity}
+											</div>
+											<button>
+												<svg
+													xmlns='http://www.w3.org/2000/svg'
+													viewBox='0 0 20 20'
+													className='hoverBackgroundEffect rounded-md h-5 w-5'
+													onClick={() => setQuantity(quantity + 1)}
+													fill='currentColor'>
+													<path
+														fillRule='evenodd'
+														d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
+														clipRule='evenodd'
+													/>
+												</svg>
+											</button>
+										</div>
+										<button
+											className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
+											onClick={handleAddToCart}>
+											Add to Cart
+										</button>
+									</>
+								)}
 							</div>
 
 							<div className='flex gap-1 items-center'>
@@ -215,7 +239,7 @@ const ProductDetails = () => {
 							</div>
 							<div
 								className='flex gap-1 items-center cursor-pointer'
-								onClick={handleAddToWishList}>
+								onClick={toggleWishlist}>
 								<div>
 									<svg
 										xmlns='http://www.w3.org/2000/svg'
