@@ -37,7 +37,9 @@ const Wishlist = () => {
 										</button>
 										<button
 											className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
-											onClick={() => addToCart({ ...item, quantity: 1 })}>
+											onClick={() =>
+												addToCart({ ...item, shoeSize: 40, quantity: 1 })
+											}>
 											Add to Cart
 										</button>
 									</div>
