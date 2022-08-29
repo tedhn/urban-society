@@ -1,6 +1,5 @@
 {
 	"name": "urban-fe",
-	"homepage": "https://tedhn.github.io/urban-society",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -8,8 +7,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "npm run build && git add dist -f && git commit -m'hosting'  && git subtree push --prefix dist origin gh-pages"
 	},
 	"dependencies": {
 		"axios": "^0.27.2",

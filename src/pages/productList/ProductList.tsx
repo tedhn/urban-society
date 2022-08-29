@@ -72,13 +72,13 @@ const ProductList = () => {
 							alt='404'
 						/>
 
-						<p className='container relative mx-auto mt-14 p-5 text-6xl font-bold z-10'>
+						<p className='container relative mx-auto mt-14 p-5 text-xl font-bold z-10 lg:text-6xl'>
 							{category.title}
 						</p>
 					</section>
 
 					<section className='container mx-auto'>
-						<div className=' my-10 p-5 px-20 flex justify-end items-center gap-4'>
+						<div className=' my-10 p-5 flex justify-end items-center gap-4 lg:px-20'>
 							<DropDown
 								label={sorting <= 0 ? "Sort" : options[sorting]}
 								options={options}
@@ -86,7 +86,7 @@ const ProductList = () => {
 							/>
 						</div>
 
-						<div className='flex flex-wrap justify-center gap-10 px-20 my-20 text-center'>
+						<div className='flex flex-wrap justify-evenly gap-10 px-6  my-20 text-center lg:justify-center lg:px-20'>
 							{shoes.map((record) => {
 								return (
 									<Card shoe={record.fields} key={record.id} id={record.id} />
@@ -96,7 +96,7 @@ const ProductList = () => {
 					</section>
 				</>
 			) : (
-				<ProductCardLoader width='auto' />
+				<ProductCardLoader width='100%' />
 			)}
 		</div>
 	);

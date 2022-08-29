@@ -39,20 +39,22 @@ function App() {
 					<WishlistContextProvider>
 						<Nav />
 						<Routes>
-							<Route path='/' element={<Home />} />
+							<Route path='urban-society'>
+								<Route path='' element={<Home />} />
 
-							<Route path='category'>
-								<Route path='' element={<Category />} />
-								<Route path=':category' element={<ProductList />} />
+								<Route path='category'>
+									<Route path='' element={<Category />} />
+									<Route path=':category' element={<ProductList />} />
+								</Route>
+
+								<Route path='products'>
+									<Route path=':productId' element={<ProductDetails />} />
+								</Route>
+								<Route path='search' element={<Search />} />
+
+								<Route path='wishlist' element={<Wishlist />} />
+								<Route path='cart' element={<Cart />} />
 							</Route>
-
-							<Route path='products'>
-								<Route path=':productId' element={<ProductDetails />} />
-							</Route>
-							<Route path='search' element={<Search />} />
-
-							<Route path='wishlist' element={<Wishlist />} />
-							<Route path='cart' element={<Cart />} />
 						</Routes>
 						<Footer />
 					</WishlistContextProvider>

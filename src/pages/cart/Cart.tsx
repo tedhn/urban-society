@@ -19,25 +19,28 @@ const Cart: React.FC = () => {
 		<div className='container mx-auto px-4 text-center bg-darkgrey flex flex-col'>
 			<div className='mt-10 font-bold text-5xl mb-10'>Your Cart</div>
 
-			<div className='container  mx-auto px-10  flex flex-col gap-10 overflow-y-auto grow'>
+			<div className='container  mx-auto lg:px-10  flex flex-col lg:gap-10 grow'>
 				{cartItems.length !== 0 ? (
 					<>
 						{cartItems.map((item, index) => {
 							return (
 								<div
-									className='flex justify-evenly items-center gap-20'
+									className='flex justify-evenly items-center gap-4 lg:gap-20'
 									key={index}>
 									<div className='w-16 h-16'>
 										<img className='object-fit' src={item.image} alt='404' />
 									</div>
 
-									<p className='font-medium text-sm grow text-left'>
-										{item.name}
-									</p>
-									<p className='font-medium text-sm '>
-										Shoe Size : {item.shoeSize}
-									</p>
-									<div className='flex gap-1'>
+									<div className='flex flex-col justify-start items-start lg:flew-row'>
+										<p className='font-medium text-sm grow text-ellipsis text-left'>
+											{item.name}
+										</p>
+										<p className='font-medium text-sm '>
+											Shoe Size : {item.shoeSize}
+										</p>
+									</div>
+
+									<div className='flex flex-col-reverse justify-center items-center lg:flex-row gap-1'>
 										<button>
 											<svg
 												xmlns='http://www.w3.org/2000/svg'

@@ -17,7 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
 }
 
 .link-underline {
@@ -34,12 +33,12 @@
   background-position: 0 100%
 }
 
-.hoverBackgroundEffect:hover{
+.hoverBackgroundEffect:hover {
   background-color: rgba(238, 238, 238, 0.109);
 }
 
-@layer components{
-  .footer-link{
-    @apply hoverBackgroundEffect px-2  rounded-md font-light text-sm mb-1 cursor-pointer hover:underline
+@layer components {
+  .footer-link {
+    @apply hoverBackgroundEffect px-2 rounded-md font-light text-sm mb-1 cursor-pointer hover:underline
   }
 }

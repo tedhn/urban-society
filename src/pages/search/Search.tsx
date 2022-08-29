@@ -41,10 +41,7 @@ const Search: React.FC<propTypes> = ({ results }) => {
 				onChange={(e) => setSearchQuery(e.target.value)}
 			/>
 			<div className='flex flex-wrap justify-center gap-10 px-20 my-20 text-center'>
-				{searchResults.map(({ fields, id }: any) => {
-					console.log(fields);
-					return <Card shoe={fields} key={id} id={id} />;
-				})}
+				{searchResults.map(({ fields, id }: any) => ( <Card shoe={fields} key={id} id={id} />))}
 			</div>
 		</div>
 	);

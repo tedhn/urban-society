@@ -38,7 +38,7 @@ const Home = () => {
 					<h2 className='my-6'>Find a style that’s uniquely you</h2>
 					<button
 						className=' py-2 px-4 font-medium text-darkgrey bg-gold'
-						onClick={() => navigate("/category")}>
+						onClick={() => navigate("/urban-society/category")}>
 						Explore More
 					</button>
 				</div>
@@ -49,7 +49,7 @@ const Home = () => {
 					<h2 className='text-2xl font-bold'>New Arrivals</h2>
 
 					{newArrival.length !== 0 ? (
-						<div className='flex flex-wrap justify-center gap-16 my-20'>
+						<div className='flex flex-wrap justify-center gap-16 my-20 px-10'>
 							{newArrival.map((shoe) => (
 								<Card
 									shoe={shoe.fields}
@@ -73,7 +73,7 @@ const Home = () => {
 					</p>
 
 					{highLights.length !== 0 ? (
-						<div className='flex flex-wrap justify-center gap-16 my-20'>
+						<div className='flex flex-wrap justify-center gap-16 my-20 px-10'>
 							{highLights.map((shoe) => (
 								<Card
 									shoe={shoe.fields}

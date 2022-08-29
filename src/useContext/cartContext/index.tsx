@@ -15,11 +15,16 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 
 		const updatedItem = newCartItems.filter((item) => name === item.name)[0];
 
+    //need help on this part
+		// problem : state does not update on click but the data changes
+		// problem : how to remove item from array if < 0
+
+		console.log(updatedItem);
 		if (quantity < 1) {
 			// removeFromCart(name);
 		} else {
 			updatedItem.quantity = quantity;
-      setCartItems(newCartItems)
+			setCartItems(newCartItems);
 		}
 	};
 
@@ -28,7 +33,7 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 		price,
 		quantity = 1,
 		shoeSize = 40,
-		image
+		image,
 	}: cartItemsTypes) => {
 		setCartItems((items) => [
 			...items,
@@ -36,21 +41,21 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 		]);
 	};
 
-	const removeFromCart = (name : string, shoeSize : number) => {
+	const removeFromCart = (name: string, shoeSize: number) => {
+		const newCartItems = cartItems;
 
-    const newCartItems = cartItems;
+		const filteredCartItmes = newCartItems.filter(
+			(item) => item.name !== name && item.shoeSize === shoeSize
+		);
 
-    const filteredCartItmes = newCartItems.filter((item )=> item.name !== name  && item.shoeSize === shoeSize)
-
-
-    setCartItems(filteredCartItmes)
+		setCartItems(filteredCartItmes);
 	};
 
-	const checkIsInCart = (name :string)=>{
-				return cartItems.filter((item) => item.name === name).length !== 0
-					? true
-					: false;
-	}
+	const checkIsInCart = (name: string) => {
+		return cartItems.filter((item) => item.name === name).length !== 0
+			? true
+			: false;
+	};
 
 	return (
 		<CartContext.Provider

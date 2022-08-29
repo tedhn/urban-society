@@ -112,9 +112,9 @@ const ProductDetails = () => {
 		<div className='container mx-auto py-20'>
 			{shoe.name !== "" ? (
 				<>
-					<div className='flex justify-center gap-20 pb-32'>
-						<div className='flex gap-3'>
-							<div className='flex flex-col gap-3'>
+					<div className='flex flex-col justify-center items-center gap-20 pb-16 lg:pb-32 lg:flex-row'>
+						<div className='flex flex-col-reverse items-center gap-3 lg:flex-row'>
+							<div className='flex justify-center lg:justify-start lg:flex-col gap-3'>
 								{images.map((image, index) => {
 									return (
 										<img
@@ -139,8 +139,10 @@ const ProductDetails = () => {
 						</div>
 
 						<div className='flex flex-col gap-3'>
-							<h2 className='font-bold text-5xl text-wrap'>{shoe.name}</h2>
-							<p className='font-light text-sm max-w-lg'>{shoe.description}</p>
+							<h2 className='font-bold text-2xl lg:text-5xl text-wrap'>
+								{shoe.name}
+							</h2>
+							<p className='font-light text-sm max-w-md'>{shoe.description}</p>
 							<p className='font-medium text-2xl my-4'>${shoe.price}</p>
 
 							<p className='font-medium text-sm'>
@@ -265,12 +267,10 @@ const ProductDetails = () => {
 					<div className=' flex flex-col gap-5 items-center'>
 						<h2 className='font-bold text-xl'>Related Products</h2>
 
-						<div className='flex flex-wrap justify-center gap-20 py-20'>
-							{relatedProducts.map((record) => {
-								return (
-									<Card shoe={record.fields} key={record.id} id={record.id} />
-								);
-							})}
+						<div className='flex flex-wrap justify-center gap-20 p-20 lg:p-0 lg:py-20'>
+							{relatedProducts.map((record) => (
+								<Card shoe={record.fields} key={record.id} id={record.id} />
+							))}
 						</div>
 					</div>
 				</>

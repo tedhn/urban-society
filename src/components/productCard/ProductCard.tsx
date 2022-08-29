@@ -41,7 +41,7 @@ const Card: React.FC<propTypes> = ({ shoe, tagColor, tagText, id }) => {
 		setIsLiked(!isLiked);
 	};
 
-	const handleClick = () => navigate(`/products/${id}`);
+	const handleClick = () => navigate(`/urban-society/products/${id}`);
 
 	return (
 		<div
