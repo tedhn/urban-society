@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import {
 	cartContextType,
@@ -10,9 +11,7 @@ import {
 } from "../../../custom";
 
 import {
-	Card,
-	ProductDetailsLoader,
-	ProductCardLoader,
+	Card
 } from "../../components";
 import {
 	CartContext,
@@ -277,10 +276,9 @@ const ProductDetails = () => {
 					</div>
 				</>
 			) : (
-				<>
-					<ProductDetailsLoader width='100%' />
-					<ProductCardLoader width='100%' />
-				</>
+							<div className='container text-center mx-auto my-24	'>
+					<PropagateLoader color='#ffffff' size={8} />
+				</div>
 			)}
 		</div>
 	);

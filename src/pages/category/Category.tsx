@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 import { RecordType, ShoeDataContextType } from "../../../custom";
-import { ProductCardLoader } from "../../components";
 import { ShoeDataContext } from "../../useContext";
 
 const Category = () => {
@@ -20,7 +20,6 @@ const Category = () => {
 	const initCategoryPage = async () => {
 		const categories = await getCategoryDetails();
 
-		console.log(categories);
 		setCategories(categories);
 	};
 
@@ -28,7 +27,9 @@ const Category = () => {
 
 	return (
 		<div className='container mx-auto text-center py-10'>
-			<h1 className='font-bold text-xl py-20 lg:text-6xl lg:py-4'>Categories</h1>
+			<h1 className='font-bold text-xl py-20 lg:text-6xl lg:py-4'>
+				Categories
+			</h1>
 			{categories.length !== 0 ? (
 				<div className='flex justify-center items-center gap-4 py-4 flex-col lg:flex-row'>
 					{categories.map((category) => {
@@ -50,7 +51,9 @@ const Category = () => {
 					})}
 				</div>
 			) : (
-				<ProductCardLoader width='100%' />
+				<div className='container text-center my-12	'>
+					<PropagateLoader color='#ffffff' size={8} />
+				</div>
 			)}
 		</div>
 	);

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import { RecordType, ShoeDataContextType } from "../../../custom";
-import { Card, ProductCardLoader } from "../../components";
+import { Card } from "../../components";
 import { ShoeDataContext } from "../../useContext";
+
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -61,7 +63,9 @@ const Home = () => {
 							))}
 						</div>
 					) : (
-						<ProductCardLoader width='100%' />
+							<div className='container text-center my-12	'>
+					<PropagateLoader color='#ffffff' size={8} />
+				</div>
 					)}
 				</div>
 			</section>
@@ -85,7 +89,9 @@ const Home = () => {
 							))}
 						</div>
 					) : (
-						<ProductCardLoader width='100%' />
+								<div className='container text-center my-12	'>
+					<PropagateLoader color='#ffffff' size={8} />
+				</div>
 					)}
 				</div>
 			</section>

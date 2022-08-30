@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import {
 	catergoryType,
 	RecordType,
 	ShoeDataContextType,
 } from "../../../custom";
-import { Card, DropDown, ProductCardLoader } from "../../components";
+import { Card, DropDown } from "../../components";
 import { ShoeDataContext } from "../../useContext";
 
 const ProductList = () => {
@@ -95,8 +96,9 @@ const ProductList = () => {
 						</div>
 					</section>
 				</>
-			) : (
-				<ProductCardLoader width='100%' />
+			) : (			<div className='container text-center mx-auto my-24	'>
+					<PropagateLoader color='#ffffff' size={8} />
+				</div>
 			)}
 		</div>
 	);
