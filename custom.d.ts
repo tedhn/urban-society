@@ -41,7 +41,7 @@ interface cartContextType {
 		shoeSize,
 		image,
 	}: cartItemsTypes) => void;
-	removeFromCart: (name: string, shoeSize) => void;
+	removeFromCart: (name: string, shoeSize : number) => void;
 
 	checkIsInCart: (name: string) => boolean;
 }

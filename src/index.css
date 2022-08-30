@@ -39,6 +39,6 @@
 
 @layer components {
   .footer-link {
-    @apply hoverBackgroundEffect px-2 rounded-md font-light text-sm mb-1 cursor-pointer hover:underline
+    @apply hoverBackgroundEffect px-1 lg:px-2 rounded-md font-light text-sm mb-1 cursor-pointer hover:underline
   }
 }

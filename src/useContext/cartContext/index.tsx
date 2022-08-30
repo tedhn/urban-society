@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { cartContextType, cartItemsTypes } from "../../../custom";
+import { notify } from "../../util";
 
 interface propTypes {
 	children: React.ReactNode;
@@ -15,7 +16,7 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 
 		const updatedItem = newCartItems.filter((item) => name === item.name)[0];
 
-    //need help on this part
+		//need help on this part
 		// problem : state does not update on click but the data changes
 		// problem : how to remove item from array if < 0
 
@@ -42,12 +43,10 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 	};
 
 	const removeFromCart = (name: string, shoeSize: number) => {
-		const newCartItems = cartItems;
 
-		const filteredCartItmes = newCartItems.filter(
-			(item) => item.name !== name && item.shoeSize === shoeSize
-		);
+		const filteredCartItmes = cartItems.filter((item) => item.name !== name);
 
+		notify("Removed from cart", "🛒");
 		setCartItems(filteredCartItmes);
 	};
 

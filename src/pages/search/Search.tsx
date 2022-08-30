@@ -27,7 +27,7 @@ const Search: React.FC<propTypes> = ({ results }) => {
 
 	return (
 		<div className='container mx-auto px-4 text-center bg-darkgrey flex flex-col'>
-			<div className='mt-10 font-bold text-5xl mb-10'>
+			<div className='my-10 font-bold lg:text-5xl '>
 				{searchQuery === ""
 					? "Search Results"
 					: `Search Results : ${searchQuery}`}

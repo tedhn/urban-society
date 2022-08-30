@@ -25,7 +25,7 @@ const ProductDetails = () => {
 	const navigate = useNavigate();
 	const params = useParams();
 
-	const { addToCart, checkIsInCart } = useContext(
+	const { cartItems , addToCart, checkIsInCart } = useContext(
 		CartContext
 	) as cartContextType;
 	const { addToWishlist, isInWishlist, removeFromWishlist } = useContext(
@@ -65,7 +65,6 @@ const ProductDetails = () => {
 		const relatedProductData = await getRandomShoes(5);
 
 		setIsLiked(isInWishlist(shoeData.name));
-		// setIsInCart()
 		setIsInCart(checkIsInCart(shoeData.name));
 
 		setShoe(shoeData);
@@ -80,8 +79,11 @@ const ProductDetails = () => {
 		window.scrollTo(0, 0);
 	};
 
+
 	const handleAddToCart = () => {
 		notify("Added to Cart", "🛒");
+
+		setIsInCart(true)
 
 		addToCart({
 			name: shoe.name,
@@ -102,7 +104,7 @@ const ProductDetails = () => {
 			notify("Added to Wishlist", "❤️");
 		} else {
 			removeFromWishlist(shoe.name);
-			notify("Removed from Wishlist", "a");
+			notify("Removed from Wishlist", "❤️");
 		}
 
 		setIsLiked(!isLiked);
@@ -112,13 +114,13 @@ const ProductDetails = () => {
 		<div className='container mx-auto py-20'>
 			{shoe.name !== "" ? (
 				<>
-					<div className='flex flex-col justify-center items-center gap-20 pb-16 lg:pb-32 lg:flex-row'>
-						<div className='flex flex-col-reverse items-center gap-3 lg:flex-row'>
-							<div className='flex justify-center lg:justify-start lg:flex-col gap-3'>
+					<div className='flex flex-col justify-center items-center gap-16 lg:gap-20 pb-16 lg:pb-32 lg:flex-row'>
+						<div className='flex flex-col-reverse items-center gap-2 lg:gap-3 lg:flex-row'>
+							<div className='flex justify-center gap-2 lg:justify-start lg:flex-col lg:gap-3'>
 								{images.map((image, index) => {
 									return (
 										<img
-											className='w-12 h-12 brightness-50 hover:brightness-100 cursor-pointer'
+											className='w-10 h-10 lg:w-12 lg:h-12 brightness-50 hover:brightness-100 cursor-pointer'
 											onMouseEnter={() => setDisplayImage(image)}
 											onMouseOut={() => setDisplayImage(shoe.imageUrl)}
 											src={image}
@@ -129,7 +131,7 @@ const ProductDetails = () => {
 								})}
 							</div>
 
-							<div className='w-96 h-96'>
+							<div className='w-56 h-56 md:w-64 md:h-64 lg:w-96 lg:h-96'>
 								<img
 									className='w-full h-full object-cover'
 									src={displayImage}
@@ -138,8 +140,8 @@ const ProductDetails = () => {
 							</div>
 						</div>
 
-						<div className='flex flex-col gap-3'>
-							<h2 className='font-bold text-2xl lg:text-5xl text-wrap'>
+						<div className='flex flex-col gap-2 lg:gap-3 p-5'>
+							<h2 className='font-bold text-xl lg:text-5xl text-wrap'>
 								{shoe.name}
 							</h2>
 							<p className='font-light text-sm max-w-md'>{shoe.description}</p>
@@ -148,18 +150,18 @@ const ProductDetails = () => {
 							<p className='font-medium text-sm'>
 								Shoe Size : {selectedShoeSize}
 							</p>
-							<ul className='flex gap-3'>
+							<ul className='flex gap-2 lg:gap-3 flex-wrap'>
 								{shoeSizes.map((shoeSize, index) => {
 									return selectedShoeSize === shoeSize ? (
 										<li
-											className='bg-offwhite text-xl text-darkgrey font-medium rounded-md p-2 cursor-pointer'
+											className='bg-offwhite p-1 lg:text-xl text-darkgrey font-medium rounded-md lg:p-2 cursor-pointer'
 											key={index}
 											onClick={() => setShoeSize(shoeSize)}>
 											{shoeSize}
 										</li>
 									) : (
 										<li
-											className='bg-offwhite text-xl text-darkgrey font-medium rounded-md p-2 cursor-pointer brightness-50'
+											className='bg-offwhite  p-1 lg:text-xl text-darkgrey font-medium rounded-md lg:p-2 cursor-pointer brightness-50'
 											key={index}
 											onClick={() => setShoeSize(shoeSize)}>
 											{shoeSize}
@@ -177,7 +179,7 @@ const ProductDetails = () => {
 									</button>
 								) : (
 									<>
-										<div className='flex gap-1 '>
+										<div className='flex gap-1 flex-wrap'>
 											<button>
 												<svg
 													xmlns='http://www.w3.org/2000/svg'
@@ -192,7 +194,7 @@ const ProductDetails = () => {
 													/>
 												</svg>
 											</button>
-											<div className='font-medium text-2xl mx-5 w-5 text-center'>
+											<div className='font-medium mx-2 lg:text-2xl lg:mx-5 w-5 text-center'>
 												{quantity}
 											</div>
 											<button>
@@ -267,7 +269,7 @@ const ProductDetails = () => {
 					<div className=' flex flex-col gap-5 items-center'>
 						<h2 className='font-bold text-xl'>Related Products</h2>
 
-						<div className='flex flex-wrap justify-center gap-20 p-20 lg:p-0 lg:py-20'>
+						<div className='flex flex-wrap justify-center gap-10 py-10 lg:justify-center lg:gap-20  lg:p-0 lg:py-20'>
 							{relatedProducts.map((record) => (
 								<Card shoe={record.fields} key={record.id} id={record.id} />
 							))}

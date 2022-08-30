@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { cartContextType, wishlistContextType } from "../../../custom";
 import { WishlistContext, CartContext } from "../../useContext";
+import { notify } from "../../util";
 
 const Wishlist = () => {
 	const { wishlistItems, removeFromWishlist } = useContext(
@@ -17,31 +18,50 @@ const Wishlist = () => {
 					<>
 						{wishlistItems.map((item, index) => {
 							return (
-								<div className='flex justify-center items-center' key={index}>
-									<div className='w-16'>
-										<img
-											className=' w-full object-cover'
-											src={item.image}
-											alt='404'
-										/>
+								<div
+									className='flex justify-evenly gap-4 lg:justify-center   lg:gap-20 items-center'
+									key={index}>
+									<div className='w-10 grow md:grow-0 lg:w-16'>
+										<img className='object-fit' src={item.image} alt='404' />
 									</div>
 
-									<p className='grow text-left mx-5'>{item.name}</p>
-									<p className=' mx-5'>${item.price}</p>
+									<p className='text-left text-ellipsis w-[100px] overflow-hidden whitespace-nowrap lg:w-52 lg:text-2xl'>
+										{item.name}
+									</p>
+									<p className='font-medium text-sm  lg:text-2xl'>
+										${item.price}
+									</p>
 
-									<div className='flex gap-5'>
+									<div className='gap-4 hidden lg:flex'>
 										<button
 											className='px-4 py-2 font-medium  bg-danger rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
 											onClick={() => removeFromWishlist(item.name)}>
-											X
+											Remove
 										</button>
 										<button
 											className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
-											onClick={() =>
-												addToCart({ ...item, shoeSize: 40, quantity: 1 })
-											}>
+											onClick={() => {
+												notify("Added to Cart", "🛒");
+												addToCart({ ...item, shoeSize: 40, quantity: 1 });
+											}}>
 											Add to Cart
 										</button>
+									</div>
+
+									<div className='block lg:hidden'>
+										<svg
+											xmlns='http://www.w3.org/2000/svg'
+											fill='none'
+											viewBox='0 0 24 24'
+											strokeWidth={1.5}
+											stroke='currentColor'
+											className='w-6 h-6'>
+											<path
+												strokeLinecap='round'
+												strokeLinejoin='round'
+												d='M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z'
+											/>
+										</svg>
 									</div>
 								</div>
 							);

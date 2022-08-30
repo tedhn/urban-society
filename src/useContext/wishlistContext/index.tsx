@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { wishlistContextType, wishlistItemTypes } from "../../../custom";
+import { notify } from "../../util";
 
 interface propTypes {
 	children: React.ReactNode;
@@ -19,12 +20,11 @@ const WishlistContextProvider: React.FC<propTypes> = ({ children }) => {
 	};
 
 	const removeFromWishlist = (name: string) => {
-		const newWishlistItems = wishlistItems;
-
-		const filteredWishlistItmes = newWishlistItems.filter(
+		const filteredWishlistItmes = wishlistItems.filter(
 			(item) => item.name !== name
 		);
 
+			notify("Removed from Wishlist", "❤️");
 		setWishlistItems(filteredWishlistItmes);
 	};
 

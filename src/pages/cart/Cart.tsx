@@ -25,55 +25,27 @@ const Cart: React.FC = () => {
 						{cartItems.map((item, index) => {
 							return (
 								<div
-									className='flex justify-evenly items-center gap-4 lg:gap-20'
+									className='flex justify-evenly items-center gap-4 lg:justify-center lg:gap-20'
 									key={index}>
-									<div className='w-16 h-16'>
+									<div className='w-10 grow md:grow-0 lg:w-16'>
 										<img className='object-fit' src={item.image} alt='404' />
 									</div>
 
-									<div className='flex flex-col justify-start items-start lg:flew-row'>
-										<p className='font-medium text-sm grow text-ellipsis text-left'>
+									<div className='flex grow flex-col justify-start items-start lg:flex-row lg:grow lg:justify-between'>
+										<p className='text-left text-ellipsis w-[100px] overflow-hidden whitespace-nowrap lg:w-52 lg:text-lg'>
 											{item.name}
 										</p>
-										<p className='font-medium text-sm '>
-											Shoe Size : {item.shoeSize}
+										<p className='font-medium text-sm  lg:text-lg'>
+											Shoe Size :{" "}
+											<span className='font-light'>{item.shoeSize}</span>
 										</p>
+										<div className='font-medium text-sm lg:text-lg'>
+											Quantity :{" "}
+											<span className='font-light'> {item.quantity}</span>
+										</div>
 									</div>
 
-									<div className='flex flex-col-reverse justify-center items-center lg:flex-row gap-1'>
-										<button>
-											<svg
-												xmlns='http://www.w3.org/2000/svg'
-												viewBox='0 0 20 20'
-												className='hoverBackgroundEffect rounded-md h-5 w-5'
-												onClick={() => updateCart(item.name, item.quantity - 1)}
-												fill='currentColor'>
-												<path
-													fillRule='evenodd'
-													d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-													clipRule='evenodd'
-												/>
-											</svg>
-										</button>
-										<div className='font-medium text-lg mx-5'>
-											{item.quantity}
-										</div>
-										<button>
-											<svg
-												xmlns='http://www.w3.org/2000/svg'
-												viewBox='0 0 20 20'
-												className='hoverBackgroundEffect rounded-md h-5 w-5'
-												onClick={() => updateCart(item.name, item.quantity + 1)}
-												fill='currentColor'>
-												<path
-													fillRule='evenodd'
-													d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
-													clipRule='evenodd'
-												/>
-											</svg>
-										</button>
-									</div>
-									<p>${item.price * item.quantity}</p>
+									<p className="font-medium lg:text-lg">${item.price * item.quantity}</p>
 
 									<button
 										className='bg-danger px-4 py-2 rounded-md font-bold hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
