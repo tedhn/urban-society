@@ -19,6 +19,10 @@ import {
 	WishlistContextProvider,
 } from "./useContext";
 
+
+// NOTE TO SELF : NEED HELP WITH USEREF FOR DROP DOWN COMPONENT
+
+
 function App() {
 	return (
 		<div className='flex flex-col min-h-screen'>

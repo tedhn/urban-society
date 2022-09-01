@@ -11,22 +11,22 @@ export const CartContext = React.createContext<cartContextType | null>(null);
 const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 	const [cartItems, setCartItems] = useState<Array<cartItemsTypes>>([]);
 
-	const updateCart = (name: string, quantity: number) => {
+	const updateCart = (updates: any) => {
 		const newCartItems = cartItems;
 
-		const updatedItem = newCartItems.filter((item) => name === item.name)[0];
+		const item = newCartItems.filter((item) => item.name === updates.name)[0];
 
-		//need help on this part
-		// problem : state does not update on click but the data changes
-		// problem : how to remove item from array if < 0
-
-		console.log(updatedItem);
-		if (quantity < 1) {
-			// removeFromCart(name);
-		} else {
-			updatedItem.quantity = quantity;
-			setCartItems(newCartItems);
+		if (updates.option.type === "shoeSize") {
+			item.shoeSize = updates.option.choice;
+		} else if (updates.option.type === "quantity") {
+			item.quantity = updates.option.choice;
 		}
+
+		const index = newCartItems.findIndex((item) => item.name === updates.name);
+
+		newCartItems.splice(index, 1, item);
+
+		setCartItems(newCartItems);
 	};
 
 	const addToCart = ({
@@ -42,8 +42,7 @@ const CartContextProvider: React.FC<propTypes> = ({ children }) => {
 		]);
 	};
 
-	const removeFromCart = (name: string, shoeSize: number) => {
-
+	const removeFromCart = (name: string) => {
 		const filteredCartItmes = cartItems.filter((item) => item.name !== name);
 
 		notify("Removed from cart", "🛒");

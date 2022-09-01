@@ -17,7 +17,7 @@ import {
 	ShoeDataContext,
 	WishlistContext,
 } from "../../useContext";
-import { notify } from "../../util";
+import { notify ,shoeSizes } from "../../util";
 
 interface shoeDataType extends shoeType {
 	relatedProducts : Array<RecordType>
@@ -51,7 +51,7 @@ const ProductDetails = () => {
 	const [gallery , setGallery] = useState({displayImage : '' , otherImages : [] })
 	const [userChoices , setUserChoices] = useState({quantity : 1 , selectedShoeSize : 38 , isLiked :false , isInCart : false})
 
-	const shoeSizes = [38, 39, 40, 41, 42, 43, 44, 45];
+
 
 	useEffect(() => {
 		initProductDetails();
@@ -150,14 +150,14 @@ const ProductDetails = () => {
 							</p>
 							<ul className='flex gap-2 lg:gap-3 flex-wrap'>
 								{shoeSizes.map((shoeSize, index) => {
-									return userChoices.selectedShoeSize === shoeSize ? (
+									return userChoices.selectedShoeSize === Number(shoeSize) ? (
 										<li
 											className='bg-offwhite p-1 lg:text-xl text-darkgrey font-medium rounded-md lg:p-2 cursor-pointer'
 											key={index}
 											onClick={() =>
 												setUserChoices({
 													...userChoices,
-													selectedShoeSize: shoeSize,
+													selectedShoeSize: Number(shoeSize),
 												})
 											}>
 											{shoeSize}
@@ -169,7 +169,7 @@ const ProductDetails = () => {
 											onClick={() =>
 												setUserChoices({
 													...userChoices,
-													selectedShoeSize: shoeSize,
+													selectedShoeSize: Number(shoeSize),
 												})
 											}>
 											{shoeSize}
@@ -182,7 +182,7 @@ const ProductDetails = () => {
 								{userChoices.isInCart ? (
 									<button
 										className='px-4 py-2 font-medium text-center text-darkgrey bg-gold rounded-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-md transition-transform'
-										onClick={() => navigate("/cart")}>
+										onClick={() => navigate("/urban-society/cart")}>
 										View Cart
 									</button>
 								) : (

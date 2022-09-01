@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
+
 import {
 	catergoryType,
 	RecordType,
@@ -12,20 +13,20 @@ import { ShoeDataContext } from "../../useContext";
 const ProductList = () => {
 	const params = useParams();
 
+	const { getCategory, getCategoryDetails } = useContext(
+		ShoeDataContext
+	) as ShoeDataContextType;
+
 	const options = ["None", "Price", "Alphabetically", "Latest"];
 
-	const [shoes, setShoes] = useState<Array<RecordType>>([]);
+	const [shoesData, setShoesData] = useState<Array<RecordType>>([]);
 	const [category, setCategory] = useState<catergoryType>({
 		image: "",
 		title: "",
 		name: "",
 		id: 0,
 	});
-	const [sorting, setSorting] = useState<number>(-1);
-
-	const { getCategory, getCategoryDetails } = useContext(
-		ShoeDataContext
-	) as ShoeDataContextType;
+	const [sorting, setSorting] = useState({type: 'sorting ' , choice : 'None'});
 
 	// loading the data on 1st render and whenever category changes
 	useEffect(() => {
@@ -33,21 +34,21 @@ const ProductList = () => {
 	}, [params.category]);
 
 	useEffect(() => {
-		switch (sorting) {
-			case 1: {
-				shoes.sort((a, b) => a.fields.price - b.fields.price);
+		switch (sorting.choice) {
+			case "Price": {
+				shoesData.sort((a, b) => a.fields.price - b.fields.price);
 				break;
 			}
-			case 2: {
-				shoes.sort((a, b) => a.fields.name.localeCompare(b.fields.name));
+			case "Alphabetically": {
+				shoesData.sort((a, b) => a.fields.name.localeCompare(b.fields.name));
 				break;
 			}
-			case 3: {
-				shoes.sort((a, b) => a.createdTime.localeCompare(b.createdTime));
+			case "Latest": {
+				shoesData.sort((a, b) => a.createdTime.localeCompare(b.createdTime));
 				break;
 			}
 			default: {
-				shoes.sort((a, b) => a.fields.id - b.fields.id);
+				shoesData.sort((a, b) => a.fields.id - b.fields.id);
 				break;
 			}
 		}
@@ -57,14 +58,14 @@ const ProductList = () => {
 		const categoryData = await getCategoryDetails(params.category!);
 		const shoeData = await getCategory(categoryData.id - 1);
 
-		setShoes(shoeData);
+		setShoesData(shoeData);
 		setCategory(categoryData);
 		window.scrollTo(0, 0);
 	};
 
 	return (
 		<div>
-			{shoes.length !== 0 ? (
+			{shoesData.length !== 0 ? (
 				<>
 					<section>
 						<img
@@ -81,14 +82,15 @@ const ProductList = () => {
 					<section className='container mx-auto'>
 						<div className=' my-10 p-5 flex justify-end items-center gap-4 lg:px-20'>
 							<DropDown
-								label={sorting <= 0 ? "Sort" : options[sorting]}
+							type="sorting"
+								label={sorting.choice === 'None' ? "Sort" : sorting.choice}
 								options={options}
-								setSorting={setSorting}
+								setUpdate={setSorting}
 							/>
 						</div>
 
 						<div className='flex flex-wrap justify-evenly gap-10 px-6  my-20 text-center lg:justify-center lg:px-20'>
-							{shoes.map((record) => {
+							{shoesData.map((record) => {
 								return (
 									<Card shoe={record.fields} key={record.id} id={record.id} />
 								);
@@ -96,7 +98,8 @@ const ProductList = () => {
 						</div>
 					</section>
 				</>
-			) : (			<div className='container text-center mx-auto my-24	'>
+			) : (
+				<div className='container text-center mx-auto my-24	'>
 					<PropagateLoader color='#ffffff' size={8} />
 				</div>
 			)}

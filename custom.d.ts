@@ -33,7 +33,7 @@ interface cartItemsTypes {
 
 interface cartContextType {
 	cartItems: Array<cartItemsTypes>;
-	updateCart: (name: string, quantity: number) => void;
+	updateCart: (updates : any) => void;
 	addToCart: ({
 		name,
 		price,

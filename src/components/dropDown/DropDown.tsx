@@ -1,12 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
 interface propsTypes {
+	type: string;
 	label: string;
 	options: string[];
-	setSorting?: any;
+	setUpdate?: any;
 }
 
-const DropDown: React.FC<propsTypes> = ({ label, options, setSorting }) => {
+const DropDown: React.FC<propsTypes> = ({
+	type,
+	label,
+	options,
+	setUpdate,
+}) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const [listening, setListening] = useState(false);
@@ -18,13 +24,21 @@ const DropDown: React.FC<propsTypes> = ({ label, options, setSorting }) => {
 		if (!menuRef.current) return;
 		setListening(true);
 
-		document.addEventListener(`click`, (evt) => {
-			const cur = menuRef.current!;
-			const node = evt.target;
+		document.addEventListener(`click`, (e) => {
+			const cur = menuRef.current;
+			const node = e.target;
 			if (cur.contains(node)) return;
 			setIsOpen(false);
 		});
-	});
+
+		return () =>
+			document.removeEventListener("click", (e) => {
+				const cur = menuRef.current;
+				const node = e.target;
+				if (cur.contains(node)) return;
+				setIsOpen(false);
+			});
+	},[]);
 
 	return (
 		<div
@@ -34,7 +48,7 @@ const DropDown: React.FC<propsTypes> = ({ label, options, setSorting }) => {
 				id='dropdownDefault'
 				data-dropdown-toggle='dropdown'
 				onClick={() => setIsOpen(!isOpen)}
-				className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+				className='text-white hoverBackgroundEffect font-medium rounded-lg text-sm px-4 py-0.5 text-center inline-flex items-center e-800'
 				type='button'>
 				{label}
 				<svg
@@ -55,7 +69,7 @@ const DropDown: React.FC<propsTypes> = ({ label, options, setSorting }) => {
 			{isOpen ? (
 				<div
 					id='dropdown'
-					className='absolute top-full z-10 w-44 bg-grey rounded divide-y divide-gray-100 shadow dark:bg-gray-700'>
+					className='absolute top-full z-10 bg-grey rounded divide-y divide-gray-100 shadow dark:bg-gray-700'>
 					<ul
 						className='py-1 text-sm text-gray-700 dark:text-white'
 						aria-labelledby='dropdownDefault'>
@@ -64,7 +78,10 @@ const DropDown: React.FC<propsTypes> = ({ label, options, setSorting }) => {
 								<li key={index}>
 									<a
 										href='#'
-										onClick={() => setSorting(index)}
+										onClick={() => {
+											setUpdate({ type, choice: option });
+											setIsOpen(false);
+										}}
 										className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-darkgrey dark:hover:text-white'>
 										{option}
 									</a>
