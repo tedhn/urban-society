@@ -19,8 +19,9 @@ const Nav = () => {
 		}
 	});
 
-	const handleNavClick = (category: string) => {
-		navigate(`/urban-society/category/${category}`);
+	const handleNavClick = (url: string) => {
+		setIsOpen(false);
+		navigate(`/urban-society/${url}`);
 	};
 
 	return (
@@ -41,17 +42,17 @@ const Nav = () => {
 					<ul className=' navOptions hidden gap-4 font-bold lg:flex'>
 						<li
 							className='link-underline relative px-4 py-2 hover:cursor-pointer'
-							onClick={() => handleNavClick("men")}>
+							onClick={() => handleNavClick("category/men")}>
 							<span className='relative z-20'>Men</span>
 						</li>
 						<li
 							className='link-underline relative px-4 py-2 hover:cursor-pointer '
-							onClick={() => handleNavClick("women")}>
+							onClick={() => handleNavClick("category/women")}>
 							<span>Women</span>
 						</li>
 						<li
 							className='link-underline relative px-4 py-2 hover:cursor-pointer '
-							onClick={() => handleNavClick("kids")}>
+							onClick={() => handleNavClick("category/kids")}>
 							<span>Kids</span>
 						</li>
 					</ul>
@@ -61,7 +62,7 @@ const Nav = () => {
 						id='navbar-default'>
 						<li
 							className='hoverBackgroundEffect flex items-center gap-3  relative p-2 rounded-md cursor-pointer'
-							onClick={() => navigate("/urban-society/search")}>
+							onClick={() => handleNavClick("/search")}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								className='h-5 w-5'
@@ -77,7 +78,7 @@ const Nav = () => {
 						</li>
 						<li
 							className='hoverBackgroundEffect flex items-center gap-3  relative p-2 rounded-md cursor-pointer'
-							onClick={() => navigate("/urban-society/wishlist")}>
+							onClick={() => handleNavClick("wishlist")}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								className='h-5 w-5'
@@ -93,7 +94,7 @@ const Nav = () => {
 						</li>
 						<li
 							className='hoverBackgroundEffect flex items-center gap-3  relative p-2 rounded-md cursor-pointer'
-							onClick={() => navigate("/urban-society/cart")}>
+							onClick={() => handleNavClick("cart")}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								className='h-5 w-5'
@@ -139,7 +140,7 @@ const Nav = () => {
 						aria-labelledby='dropdownDefault'>
 						<div
 							onClick={() => setIsOpen(!isOpen)}
-							className='hoverBackgroundEffect p-2'>
+							className='hoverBackgroundEffect px-4 py-2 cursor-pointer'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'
@@ -155,33 +156,33 @@ const Nav = () => {
 							</svg>
 						</div>
 						<li
-							onClick={() => handleNavClick("men")}
-							className='hoverBackgroundEffect p-2'>
+							onClick={() => handleNavClick("category/men")}
+							className='hoverBackgroundEffect px-4 py-2 cursor-pointer'>
 							<span className='relative z-20'>Men</span>
 						</li>
 						<li
-							onClick={() => handleNavClick("women")}
-							className='hoverBackgroundEffect p-2'>
+							onClick={() => handleNavClick("category/women")}
+							className='hoverBackgroundEffect px-4 py-2 cursor-pointer'>
 							<span>Women</span>
 						</li>
 						<li
-							onClick={() => handleNavClick("kids")}
-							className='hoverBackgroundEffect p-2'>
+							onClick={() => handleNavClick("category/kids")}
+							className='hoverBackgroundEffect px-4 py-2 cursor-pointer'>
 							<span>Kids</span>
 						</li>
 						<li
-							onClick={() => navigate("/urban-society/search")}
-							className='hoverBackgroundEffect p-2'>
+							onClick={() => handleNavClick("search")}
+							className='hoverBackgroundEffect px-4 py-2 cursor-pointer'>
 							Search
 						</li>
 						<li
-							onClick={() => navigate("/urban-society/wishlist")}
-							className='hoverBackgroundEffect p-2'>
+							onClick={() => handleNavClick("wishlist")}
+							className='hoverBackgroundEffect px-4 py-2 p-2 cursor-pointer'>
 							Wishlist
 						</li>
 						<li
-							onClick={() => navigate("/urban-society/cart")}
-							className='hoverBackgroundEffect p-2 flex gap-2'>
+							onClick={() => handleNavClick("cart")}
+							className='hoverBackgroundEffect px-4 py-2 flex gap-2 cursor-pointer'>
 							Cart
 							{cartItems.length !== 0 ? (
 								<div className='text-sm font-light px-2 bg-danger text-white rounded-full '>
@@ -191,19 +192,6 @@ const Nav = () => {
 						</li>
 					</ul>
 				</div>
-
-				{/* <ul
-					className={
-						" absolute top-0 right-0 h-screen w-48 bg-grey text-white lg:hidden " +
-						(isOpen ? "flex flex-col items-start p-4" : "hidden")
-					}>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Women</li>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Men</li>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Kids</li>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Search</li>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Wishlist</li>
-					<li className='hoverBackgroundEffect p-2  rounded-md '>Cart</li>
-				</ul> */}
 			</nav>
 		</div>
 	);

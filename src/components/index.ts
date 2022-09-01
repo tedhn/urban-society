@@ -1,6 +1,8 @@
+import React from "react";
+
 import Nav from "./nav";
 import Footer from "./footer";
 import Card from "./productCard";
-import DropDown from "./dropDown";
+const DropDown = React.lazy(() => import("./dropDown"));
 
 export { Nav, Footer, Card, DropDown };

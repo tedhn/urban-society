@@ -1,9 +1,13 @@
-import Cart from "./cart";
+import React from "react";
+
+
 import Home from "./home";
-import ProductDetails from "./productDetails";
-import ProductList from "./productList";
-import Search from "./search";
-import Wishlist from "./wishlist";
-import Category from "./category";
+const ProductDetails = React.lazy(() => import("./productDetails"));
+const ProductList = React.lazy(() => import("./productList"));
+const Search = React.lazy(() => import("./search"));
+const Wishlist = React.lazy(() => import("./wishlist"));
+const Category = React.lazy(() => import("./category"));
+const Cart = React.lazy(() => import("./cart"));
+
 
 export { Cart, Home, ProductDetails, ProductList, Search, Wishlist, Category };
