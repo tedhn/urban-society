@@ -70,11 +70,11 @@ const ProductList = () => {
 					<section>
 						<img
 							src={category.image}
-							className='absolute h-60 w-full top-0 object-cover object-center brightness-50'
+							className='absolute h-96 w-full top-0 object-cover object-center brightness-50'
 							alt='404'
 						/>
 
-						<p className='container relative mx-auto mt-14 p-5 text-xl font-bold z-10 lg:text-6xl'>
+						<p className='container relative mx-auto mt-52 p-5 text-xl font-bold z-10 lg:text-6xl'>
 							{category.title}
 						</p>
 					</section>

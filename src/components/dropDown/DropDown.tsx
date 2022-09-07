@@ -14,7 +14,6 @@ const DropDown: React.FC<propsTypes> = ({
 	setUpdate,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const [listening, setListening] = useState(false);
 
 	const menuRef = useRef<any>();
@@ -24,21 +23,17 @@ const DropDown: React.FC<propsTypes> = ({
 		if (!menuRef.current) return;
 		setListening(true);
 
-		document.addEventListener(`click`, (e) => {
+		const handleListenClick = (e: MouseEvent) => {
 			const cur = menuRef.current;
 			const node = e.target;
-			if (cur.contains(node)) return;
+			if (cur?.contains(node)) return;
 			setIsOpen(false);
-		});
+		};
 
-		return () =>
-			document.removeEventListener("click", (e) => {
-				const cur = menuRef.current;
-				const node = e.target;
-				if (cur.contains(node)) return;
-				setIsOpen(false);
-			});
-	},[]);
+		window.addEventListener(`click`, handleListenClick);
+
+		return () => window.removeEventListener("click", handleListenClick);
+	}, []);
 
 	return (
 		<div
@@ -50,7 +45,7 @@ const DropDown: React.FC<propsTypes> = ({
 				onClick={() => setIsOpen(!isOpen)}
 				className='text-white hoverBackgroundEffect font-medium rounded-lg text-sm px-4 py-0.5 text-center inline-flex items-center e-800'
 				type='button'>
-				{label}
+				<div className="">{label}</div>
 				<svg
 					className='ml-2 w-4 h-4'
 					aria-hidden='true'

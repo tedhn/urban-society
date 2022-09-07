@@ -62,7 +62,7 @@ const Nav = () => {
 						id='navbar-default'>
 						<li
 							className='hoverBackgroundEffect flex items-center gap-3  relative p-2 rounded-md cursor-pointer'
-							onClick={() => handleNavClick("/search")}>
+							onClick={() => handleNavClick("search")}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								className='h-5 w-5'
